@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    internal static object main;
     private Vector3 _offset;
     [SerializeField] private Transform target;
     [SerializeField] private float smoothTime;
