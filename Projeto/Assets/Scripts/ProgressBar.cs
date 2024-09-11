@@ -1,19 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProgressBar : MonoBehaviour
 {
-    public float maxHeight = 1f;          
-    public float decreaseRate = 0.1f;      
-    public float delayBeforeStart = 2f;    
-    public float resetDelay = 3f;          
+    public float maxHeight = 1f;
+    public float decreaseRate = 0.1f;
+    public float delayBeforeStart = 2f;
+    public float resetDelay = 3f;
 
     private float currentHeight;
-    private float elapsedTime = 0f;         
-    private float resetElapsedTime = 0f;    
-    private bool isResetting = false;       
+    private float elapsedTime = 0f;
+    private float resetElapsedTime = 0f;
+    private bool isResetting = false;
 
     void Start()
     {
@@ -30,7 +27,7 @@ public class ProgressBar : MonoBehaviour
             if (resetElapsedTime >= resetDelay)
             {
                 isResetting = false;
-                elapsedTime = 0f; 
+                elapsedTime = 0f;
                 UpdateScale();
             }
         }
@@ -47,7 +44,7 @@ public class ProgressBar : MonoBehaviour
 
                 if (currentHeight <= 0)
                 {
-                    enabled = false; 
+                    enabled = false;
                 }
             }
         }
@@ -55,7 +52,7 @@ public class ProgressBar : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ResetObject")) 
+        if (other.CompareTag("ResetObject"))
         {
             currentHeight = maxHeight;
             UpdateScale();
@@ -66,7 +63,7 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateScale()
     {
+    
         transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
-        transform.localPosition = new Vector3(transform.localPosition.x, maxHeight / 2f - currentHeight / 2f, transform.localPosition.z);
     }
 }
