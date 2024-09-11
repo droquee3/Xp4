@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,24 +6,43 @@ using UnityEngine.InputSystem;
 
 public class CameraRotation2 : MonoBehaviour
 {
-    public float horizontalSpeed = 5f; 
-    public float verticalSpeed = 5f;   
-    public float verticalClamp = 80f; 
+    public float rotationSpeed = 5f;             
+    public Vector2 verticalLimits = new Vector2(-30, 60); 
+    public CinemachineVirtualCamera virtualCamera; 
+    public float smoothTime = 0.1f;             
 
-    private float verticalRotation = 0f; 
+    private float currentYaw = 0f;                
+    private float currentPitch = 0f;              
+    private float yawSmoothVelocity;              
+    private float pitchSmoothVelocity;            
+    private float targetYaw = 0f;                 
+    private float targetPitch = 0f;              
+
+    void Start() { }
+    
 
     void Update()
     {
-       
-        float horizontalInput = Input.GetAxis("Mouse X");
-        float verticalInput = Input.GetAxis("Mouse Y");
+      
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
+        float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed;
 
       
-        float horizontalRotation = horizontalInput * horizontalSpeed;
-        verticalRotation -= verticalInput * verticalSpeed;
-        verticalRotation = Mathf.Clamp(verticalRotation, -verticalClamp, verticalClamp);
+        targetYaw += mouseX;
+        targetPitch -= mouseY; 
+        targetPitch = Mathf.Clamp(targetPitch, verticalLimits.x, verticalLimits.y); 
 
        
-        transform.localRotation = Quaternion.Euler(verticalRotation, transform.localRotation.eulerAngles.y + horizontalRotation, 0f);
+        currentYaw = Mathf.SmoothDamp(currentYaw, targetYaw, ref yawSmoothVelocity, smoothTime);
+        currentPitch = Mathf.SmoothDamp(currentPitch, targetPitch, ref pitchSmoothVelocity, smoothTime);
+
+        transform.rotation = Quaternion.Euler(0, currentYaw, 0);
+
+        
+        if (virtualCamera != null)
+        {
+            var cameraTransform = virtualCamera.transform;
+            cameraTransform.localRotation = Quaternion.Euler(currentPitch, 0, 0);
+        }
     }
 }
