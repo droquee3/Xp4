@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ResetObject
   - Ground
+  - TriggerZone
   layers:
   - Default
   - TransparentFX
