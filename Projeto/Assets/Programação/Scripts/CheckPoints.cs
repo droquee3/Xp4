@@ -23,7 +23,7 @@ public class CheckPoints : MonoBehaviour
 
         if (dead == true) {
             player.transform.position = vectorPoint;    
-            dead = false;
+            dead = true;
         }
     }
 

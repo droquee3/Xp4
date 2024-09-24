@@ -58,7 +58,7 @@ public class ProgressBar : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         
-        if (other.CompareTag("ResetObject") && !isResetting && !isOxygenDepleted)
+        if (other.CompareTag("Checkpoint") && !isResetting && !isOxygenDepleted)
         {
             currentHeight = maxHeight;
             UpdateScale();
@@ -96,7 +96,7 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateScale()
     {
-        
+
         transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
     }
 }
