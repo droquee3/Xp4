@@ -7,7 +7,6 @@ public class UnderwaterMovement : MonoBehaviour {
     public float swimSpeed = 3f; 
     public float riseSpeed = 1.5f; 
     public float fallMultiplier = 0.5f; 
-    public float rotateSpeed = 50f; 
     public Rigidbody rb; 
     public Transform cameraTransform;  // Referência para a câmera
     private bool isGrounded = true; 
@@ -19,7 +18,9 @@ public class UnderwaterMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>(); 
         rb.useGravity = true; 
 
-        cameraTransform = GetComponent<Transform>(); 
+        if (cameraTransform == null) {
+            cameraTransform = GetComponent<Transform>();   // Pega a câmera principal se não estiver configurada
+        }
     }
 
     void Update() {
@@ -30,49 +31,39 @@ public class UnderwaterMovement : MonoBehaviour {
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
-        // Normaliza os vetores para evitar influências de altura
+        // Normaliza os vetores para que a altura (eixo y) não influencie a direção
         forward.y = 0;
         right.y = 0;
         forward.Normalize();
         right.Normalize();
 
-        // Calcula a direção do movimento com base na câmera
+        // Movimentação baseada na câmera
         Vector3 movement = (forward * moveVertical + right * moveHorizontal).normalized;
 
         if (!isSwimming) {
-            // Movimentação no solo
+            // Movimentação no solo baseada na direção da câmera
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
-        }
-        else {
-            // Movimentação na água
+        } else {
+            // Movimentação na água baseada na câmera
             rb.velocity = new Vector3(movement.x * swimSpeed, rb.velocity.y, movement.z * swimSpeed);
 
             // Subir ao pressionar o botão de pulo
             if (Input.GetButton("Jump")) {
                 rb.velocity = new Vector3(rb.velocity.x, riseSpeed, rb.velocity.z);
-            }
-            else {
+            } else {
                 // Caso não esteja pressionando o botão de pulo, aplica uma leve queda
                 rb.velocity = new Vector3(rb.velocity.x, -0.1f, rb.velocity.z);
             }
-        }
-
-        // Gira o personagem com base na câmera
-        if (movement != Vector3.zero) {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
         }
 
         // Pular com o botão "Jump"
         if (Input.GetButtonDown("Jump")) {
             if (isGrounded) {
                 Jump();
-            }
-            else {
+            } else {
                 if (Time.time - lastJumpTime < doubleTapTime) {
                     ToggleSwimMode(); 
-                }
-                else {
+                } else {
                     lastJumpTime = Time.time; 
                 }
             }
