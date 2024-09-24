@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1358.3185, g: 1810.8655, b: 3591.7036, a: 1}
+  m_IndirectSpecularColor: {r: 1355.8158, g: 1806.2212, b: 3579.1565, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -427,6 +427,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8961359253771211100, guid: 44bbf644119431e4db0d4257b8e1521c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 44bbf644119431e4db0d4257b8e1521c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1064,7 +1069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560712044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12469028, y: -0.000000011986518, z: 0.0000000015063581, w: 0.9921957}
+  m_LocalRotation: {x: 0.1246903, y: 0, z: 0, w: 0.9921957}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1153,6 +1158,7 @@ MonoBehaviour:
   fallMultiplier: 0.5
   rotateSpeed: 50
   rb: {fileID: 641123342}
+  cameraTransform: {fileID: 1823688467}
 --- !u!1 &718749750
 GameObject:
   m_ObjectHideFlags: 0
@@ -11491,7 +11497,7 @@ GameObject:
   - component: {fileID: 1629214391}
   - component: {fileID: 1629214390}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: obj_bigEye
   m_TagString: TriggerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11793,7 +11799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703245874}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17067233, y: 0, z: 0, w: 0.98532784}
+  m_LocalRotation: {x: 0.17067236, y: 0, z: 0, w: 0.98532784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11879,7 +11885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786740654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17067233, y: -1.7179747e-15, z: -4.285605e-17, w: 0.98532784}
+  m_LocalRotation: {x: 0.17067236, y: 0, z: 0, w: 0.98532784}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
