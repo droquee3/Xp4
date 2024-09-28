@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5768356676981659841
+--- !u!114 &-4570466649016807692
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_LuzGuiaShader
+  m_Name: LuzVerde
   m_Shader: {fileID: -6465566751694194690, guid: 629e092b16124554fbb9281e66c8bcbc,
     type: 3}
   m_Parent: {fileID: 0}
@@ -78,7 +78,7 @@ Material:
     - _CullMode: 0
     - _CullModeForward: 0
     - _DepthOffsetEnable: 0
-    - _Dissolve: 35
+    - _Dissolve: 0
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
@@ -124,15 +124,15 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color1: {r: 1024, g: 791.0426, b: 0, a: 0}
-    - _Color2: {r: 6.898701, g: 5.3834605, b: 0, a: 0}
+    - _Color1: {r: 0, g: 0.00073146453, b: 0.00015801105, a: 0}
+    - _Color2: {r: 0, g: 4.2870936, b: 2.305631, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpeedDissolve: {r: -0.5, g: 0, b: 0, a: 0}
     - _Vector2: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3626804808102976723
+--- !u!114 &1557901841366653690
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
