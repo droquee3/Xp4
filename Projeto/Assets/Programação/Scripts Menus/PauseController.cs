@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class PauseMenuManager : MonoBehaviour
     public EventSystem eventSystem;
     public GameObject firstSelected;
     public GameObject[] buttons;
+    
+    public CameraOrbital customCamera;
 
     private bool isPaused = false; 
     private int currentIndex = 0;
@@ -80,13 +82,12 @@ public class PauseMenuManager : MonoBehaviour
         isPaused = false;
         eventSystem.SetSelectedGameObject(null);
 
-        
         ResetPlayerInputs();
-    }
 
-    private void ResetPlayerInputs()
-    {
-        Input.ResetInputAxes();
+        if (customCamera != null)
+        {
+            customCamera.SetPauseState(false);
+        }
     }
 
     public void Pause()
@@ -97,9 +98,18 @@ public class PauseMenuManager : MonoBehaviour
         currentIndex = 0;
         eventSystem.SetSelectedGameObject(firstSelected);
         UpdateButtonVisuals();
+
+        if (customCamera != null)
+        {
+            customCamera.SetPauseState(true);
+        }
     }
 
-    
+    private void ResetPlayerInputs()
+    {
+        Input.ResetInputAxes();
+    }
+
     private void SetupButtonActions()
     {
         Button continueButton = buttons[0].GetComponent<Button>(); 
@@ -107,8 +117,14 @@ public class PauseMenuManager : MonoBehaviour
             Resume(); 
         });
 
-        Button quitButton = buttons[1].GetComponent<Button>(); 
+        Button configButton = buttons[1].GetComponent<Button>(); 
+        configButton.onClick.AddListener(() => {
+            Debug.Log("Config button clicked"); // Verificação
+        });
+
+        Button quitButton = buttons[2].GetComponent<Button>(); 
         quitButton.onClick.AddListener(() => {
+            Debug.Log("Quit to Menu button clicked"); // Verificação
             QuitToMenu();
         });
     }
