@@ -8,6 +8,8 @@ TagManager:
   - TriggerZone
   - Checkpoint
   - PushBackZone
+  - EsferaMenor
+  - EsferaColetavel
   layers:
   - Default
   - TransparentFX

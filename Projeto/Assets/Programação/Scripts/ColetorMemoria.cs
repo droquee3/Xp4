@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ColetorMemoria : MonoBehaviour
 {
-    public GameObject particulas; 
+    public GameObject particulas;  // Referência ao efeito de partículas
     public float tempoAntesDeCarregarNivel = 2f;  
 
-    private bool colidiu = false; 
+    private bool colidiu = false;  
 
     void OnCollisionEnter(Collision collision)
     {
@@ -16,19 +16,22 @@ public class ColetorMemoria : MonoBehaviour
         {
             colidiu = true;  
 
+            
             if (particulas != null)
             {
                 particulas.transform.position = transform.position;
                 particulas.SetActive(true);
             }
 
+          
             gameObject.SetActive(false);
 
-  
+           
             Invoke("CarregarMenuPrincipal", tempoAntesDeCarregarNivel);
         }
     }
 
+   
     void CarregarMenuPrincipal()
     {
         SceneManager.LoadScene("MenuPrincipal");

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LuzVerde
+  m_Name: LuzAzul
   m_Shader: {fileID: -6465566751694194690, guid: 629e092b16124554fbb9281e66c8bcbc,
     type: 3}
   m_Parent: {fileID: 0}
@@ -124,8 +124,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color1: {r: 0, g: 3.8095791, b: 1.0375472, a: 0}
-    - _Color2: {r: 0, g: 8.603772, b: 2.882939, a: 0}
+    - _Color1: {r: 0, g: 0.097964115, b: 19.998602, a: 0}
+    - _Color2: {r: 0, g: 3.8188286, b: 31.626795, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpeedDissolve: {r: 0, g: 0, b: 0, a: 0}

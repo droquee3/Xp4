@@ -23,54 +23,69 @@ public class UnderwaterMovement : MonoBehaviour {
         }
     }
 
-    void Update() {
+    void Update()
+    {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-   
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
-       
         forward.y = 0;
         right.y = 0;
         forward.Normalize();
         right.Normalize();
 
-        
         Vector3 movement = (forward * moveVertical + right * moveHorizontal).normalized;
 
-        if (!isSwimming) {
-            
+       
+        if (!isSwimming)
+        {
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
-        } else {
-        
+        }
+        else
+        {
             rb.velocity = new Vector3(movement.x * swimSpeed, rb.velocity.y, movement.z * swimSpeed);
 
-            
-            if (Input.GetButton("Jump")) {
+            if (Input.GetButton("Jump"))
+            {
                 rb.velocity = new Vector3(rb.velocity.x, riseSpeed, rb.velocity.z);
-            } else {
-              
+            }
+            else
+            {
                 rb.velocity = new Vector3(rb.velocity.x, -0.1f, rb.velocity.z);
             }
         }
 
         
-        if (Input.GetButtonDown("Jump")) {
-            if (isGrounded) {
+        if (movement != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+        }
+
+        // Pulo
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded)
+            {
                 Jump();
-            } else {
-                if (Time.time - lastJumpTime < doubleTapTime) {
-                    ToggleSwimMode(); 
-                } else {
-                    lastJumpTime = Time.time; 
+            }
+            else
+            {
+                if (Time.time - lastJumpTime < doubleTapTime)
+                {
+                    ToggleSwimMode();
+                }
+                else
+                {
+                    lastJumpTime = Time.time;
                 }
             }
         }
 
-       
-        if (rb.velocity.y < 0 && !isSwimming) {
+      
+        if (rb.velocity.y < 0 && !isSwimming)
+        {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
