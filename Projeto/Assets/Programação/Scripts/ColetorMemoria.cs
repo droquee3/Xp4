@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ColetorMemoria : MonoBehaviour
 {
-    public GameObject particulas;  // Referência ao efeito de partículas
+    public GameObject particulas;  
     public float tempoAntesDeCarregarNivel = 2f;  
 
     private bool colidiu = false;  
