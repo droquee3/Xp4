@@ -11,7 +11,6 @@ public class OlhoGigante : MonoBehaviour
     public float offsetZ = 10f;
     private bool eyeActivated = false;
     private float deactivateTimer = 0f;
-    private Vector3 pushDirection;
     private Vector3 initialEyePosition;
 
     void Start()
@@ -26,24 +25,10 @@ public class OlhoGigante : MonoBehaviour
     {
         if (other.CompareTag("Player") && !eyeActivated)
         {
-            Vector3 relativePosition = other.transform.position - transform.position;
+            Vector3 playerDirection = other.transform.forward;  
 
-            if (Mathf.Abs(relativePosition.x) > Mathf.Abs(relativePosition.z))
-            {
-                if (relativePosition.x > 0)
-                    pushDirection = Vector3.left;
-                else
-                    pushDirection = Vector3.right;
-            }
-            else
-            {
-                if (relativePosition.z > 0)
-                    pushDirection = Vector3.back;
-                else
-                    pushDirection = Vector3.forward;
-            }
-
-            Vector3 eyePosition = transform.position + pushDirection * offsetZ;
+           
+            Vector3 eyePosition = transform.position + playerDirection * offsetZ;
             initialEyePosition = new Vector3(eyePosition.x, transform.position.y + offsetY, eyePosition.z);
             eye.transform.position = initialEyePosition;
 
@@ -78,7 +63,7 @@ public class OlhoGigante : MonoBehaviour
     {
         Vector3 directionToPlayer = player.position - eye.transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-        targetRotation *= Quaternion.Euler(90, 0, 0);
+        targetRotation *= Quaternion.Euler(90, 0, 0);  
         eye.transform.rotation = targetRotation;
     }
 }
