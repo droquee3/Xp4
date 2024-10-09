@@ -1,33 +1,59 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class PauseMenuManager : MonoBehaviour
+public class PauseMenuController : MonoBehaviour
 {
-    public GameObject pauseMenuUI; 
-    public EventSystem eventSystem;
-    public GameObject firstSelected;
-    public GameObject[] buttons;
-    
-    public CameraOrbital customCamera;
+    public GameObject pauseMenuUI;        
+    public GameObject[] buttons;          
+    public int hoveredButtonIndex = -1;   
+    public int selectedButtonIndex = 0;   
+    public bool isControlMode = false;   
 
-    private bool isPaused = false; 
-    private int currentIndex = 0;
-    private float moveThreshold = 0.2f; 
-    private bool isNavigating = false; 
+    public Vector3 normalScale = new Vector3(1, 1, 1);
+    public Vector3 highlightedScale = new Vector3(1.2f, 1.2f, 1.2f); // Aumenta 20%
+
+    private bool isPaused = false;
+
+    public float inputDelay = 0.2f;  // Atraso entre as entradas do controle
+    private float nextInputTime = 0f; // Tempo para a próxima entrada
 
     void Start()
     {
         pauseMenuUI.SetActive(false);
 
-        if (firstSelected != null)
+        for (int i = 0; i < buttons.Length; i++)
         {
-            eventSystem.SetSelectedGameObject(firstSelected);
-            currentIndex = System.Array.IndexOf(buttons, firstSelected);
-            UpdateButtonVisuals();
+            int index = i;
+            GameObject buttonObj = buttons[i];
+            Button button = buttonObj.GetComponent<Button>();
+
+            if (button != null)
+            {
+                string buttonName = buttonObj.name;
+
+                button.onClick.AddListener(() => ButtonClicked(buttonName));
+
+                buttonObj.transform.localScale = normalScale;
+
+                EventTrigger trigger = buttonObj.AddComponent<EventTrigger>();
+
+                EventTrigger.Entry entryEnter = new EventTrigger.Entry
+                {
+                    eventID = EventTriggerType.PointerEnter
+                };
+                entryEnter.callback.AddListener((eventData) => { OnMouseHover(index); });
+                trigger.triggers.Add(entryEnter);
+
+                EventTrigger.Entry entryExit = new EventTrigger.Entry
+                {
+                    eventID = EventTriggerType.PointerExit
+                };
+                entryExit.callback.AddListener((eventData) => { OnMouseExit(); });
+                trigger.triggers.Add(entryExit);
+            }
         }
-        SetupButtonActions();
     }
 
     void Update()
@@ -36,124 +62,166 @@ public class PauseMenuManager : MonoBehaviour
         {
             if (isPaused)
             {
-                Resume();
+                ResumeGame();
             }
             else
             {
-                Pause();
+                PauseGame();
             }
         }
 
         if (isPaused)
         {
-            float vertical = Input.GetAxis("Vertical");
-
-            if (vertical > moveThreshold && !isNavigating)
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || Input.GetButtonDown("Submit"))
             {
-                currentIndex = (currentIndex - 1 + buttons.Length) % buttons.Length;
-                UpdateButtonVisuals();
-                isNavigating = true;
-            }
-            else if (vertical < -moveThreshold && !isNavigating)
-            {
-                currentIndex = (currentIndex + 1) % buttons.Length;
-                UpdateButtonVisuals();
-                isNavigating = true;
-            }
-            else if (Mathf.Abs(vertical) < moveThreshold)
-            {
-                isNavigating = false;
-            }
-
-            if (Input.GetButtonDown("Submit"))
-            {
-                if (eventSystem.currentSelectedGameObject != null)
+                if (!isControlMode)
                 {
-                    ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, new PointerEventData(eventSystem), ExecuteEvents.submitHandler);
+                    isControlMode = true;
+                    Debug.Log("Modo controle ativado");
                 }
             }
+
+            if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+            {
+                if (isControlMode)
+                {
+                    isControlMode = false;
+                    Debug.Log("Modo mouse ativado");
+                }
+            }
+
+            if (isControlMode)
+            {
+                HandleControllerInput();
+            }
         }
     }
 
-    public void Resume()
+     private void HandleControllerInput()
     {
-        pauseMenuUI.SetActive(false); 
-        Time.timeScale = 1f; 
-        isPaused = false;
-        eventSystem.SetSelectedGameObject(null);
-
-        ResetPlayerInputs();
-
-        if (customCamera != null)
+        // Verifica se o controle está ativo e se o tempo atual é maior ou igual ao tempo de entrada permitido
+        if (isControlMode)
         {
-            customCamera.SetPauseState(false);
+            float verticalInput = Input.GetAxis("Vertical");
+
+            // Verifica se há entrada vertical significativa
+            if (Mathf.Abs(verticalInput) > 0.1f && Time.time >= nextInputTime)
+            {
+                if (verticalInput > 0) // Cima
+                {
+                    selectedButtonIndex = (selectedButtonIndex - 1 + buttons.Length) % buttons.Length;
+                    UpdateButtonVisuals();
+                    nextInputTime = Time.time + inputDelay; // Atualiza o tempo para a próxima entrada
+                }
+                else if (verticalInput < 0) // Baixo
+                {
+                    selectedButtonIndex = (selectedButtonIndex + 1) % buttons.Length;
+                    UpdateButtonVisuals();
+                    nextInputTime = Time.time + inputDelay; // Atualiza o tempo para a próxima entrada
+                }
+            }
+
+            // Aciona o botão selecionado
+            if (Input.GetButtonDown("Submit"))
+            {
+                buttons[selectedButtonIndex].GetComponent<Button>().onClick.Invoke();
+            }
+
+            // Reseta o tempo de entrada se não houver movimento
+            if (Mathf.Abs(verticalInput) < 0.1f)
+            {
+                nextInputTime = Time.time; // Permite mudança imediata se não houver movimento
+            }
         }
     }
 
-    public void Pause()
+
+
+
+    void UpdateButtonVisuals()
     {
-        pauseMenuUI.SetActive(true); 
-        Time.timeScale = 0f; 
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].transform.localScale = (i == selectedButtonIndex) ? highlightedScale : normalScale;
+        }
+    }
+
+    void ButtonClicked(string buttonName)
+    {
+        switch (buttonName)
+        {
+            case "ContinueButton":
+                ResumeGame();
+                break;
+            case "SettingsButton":
+                OpenSettings();
+                break;
+            case "ReturnToMenuButton":
+                ReturnToMainMenu();
+                break;
+            default:
+                Debug.Log("Botão não reconhecido: " + buttonName);
+                break;
+        }
+    }
+
+    void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
         isPaused = true;
-        currentIndex = 0;
-        eventSystem.SetSelectedGameObject(firstSelected);
-        UpdateButtonVisuals();
 
-        if (customCamera != null)
-        {
-            customCamera.SetPauseState(true);
-        }
+        // Desabilitar a movimentação da câmera ou outros scripts que não devem funcionar enquanto o jogo está pausado
+        // Aqui você pode desabilitar scripts que não devem ser executados
+        // Exemplo: FindObjectOfType<CameraController>().enabled = false; 
     }
 
-    private void ResetPlayerInputs()
+    void ResumeGame()
     {
-        Input.ResetInputAxes();
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        // Habilitar novamente a movimentação da câmera ou outros scripts
+        // Exemplo: FindObjectOfType<CameraController>().enabled = true; 
     }
 
-    private void SetupButtonActions()
+    void OpenSettings()
     {
-        Button continueButton = buttons[0].GetComponent<Button>(); 
-        continueButton.onClick.AddListener(() => {
-            Resume(); 
-        });
-
-        Button configButton = buttons[1].GetComponent<Button>(); 
-        configButton.onClick.AddListener(() => {
-            Debug.Log("Config button clicked"); // Verificação
-        });
-
-        Button quitButton = buttons[2].GetComponent<Button>(); 
-        quitButton.onClick.AddListener(() => {
-            Debug.Log("Quit to Menu button clicked"); // Verificação
-            QuitToMenu();
-        });
+        Debug.Log("Abrir configurações");
+        // Aqui você pode carregar uma cena de configurações ou exibir o painel de configurações
+        // Exemplo: SceneManager.LoadScene("Configurações");
     }
 
-    private void QuitToMenu()
+    void ReturnToMainMenu()
     {
+        Time.timeScale = 1f; 
         SceneManager.LoadScene("MenuPrincipal");
     }
 
-    private void UpdateButtonVisuals()
+    public void OnMouseHover(int index)
     {
-        foreach (GameObject button in buttons)
+        if (!isControlMode)
         {
-            button.transform.localScale = Vector3.one; 
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].transform.localScale = (i == index) ? highlightedScale : normalScale;
+            }
+
+            hoveredButtonIndex = index;
         }
-
-        buttons[currentIndex].transform.localScale = Vector3.one * 1.1f;
-        eventSystem.SetSelectedGameObject(buttons[currentIndex]);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnMouseExit()
     {
-        Transform buttonTransform = eventData.pointerEnter.transform;
-        buttonTransform.localScale = Vector3.one * 1.1f; 
-    }
+        if (!isControlMode)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].transform.localScale = normalScale;
+            }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Transform buttonTransform = eventData.pointerEnter.transform;
-        buttonTransform.localScale = Vector3.one; 
+            hoveredButtonIndex = -1;
+        }
     }
 }
