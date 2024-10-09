@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 261.80057, g: 324.3278, b: 429.24698, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 827561411}
   - component: {fileID: 827561410}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,12 +789,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a411c9811dfa849ae0bc1cd3ce1400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1596834386}
-  firstSelected: {fileID: 1894933241}
   buttons:
   - {fileID: 1894933241}
   - {fileID: 913324132}
   - {fileID: 827561408}
+  hoveredButtonIndex: -1
+  selectedButtonIndex: 0
+  isControlMode: 0
+  inputDelay: 0.2
+  normalScale: {x: 1, y: 1, z: 1}
+  highlightedScale: {x: 1.2, y: 1.2, z: 1.2}
 --- !u!4 &842787357
 Transform:
   m_ObjectHideFlags: 0
@@ -823,7 +827,7 @@ GameObject:
   - component: {fileID: 913324135}
   - component: {fileID: 913324134}
   m_Layer: 5
-  m_Name: Options
+  m_Name: OptionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,51 +935,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913324132}
   m_CullTransparentMesh: 1
---- !u!1 &1327602487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1327602489}
-  - component: {fileID: 1327602488}
-  m_Layer: 0
-  m_Name: OpenLevel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1327602488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327602487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6233ae862c88da145b82396675da5e81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: OutdoorsScene
---- !u!4 &1327602489
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327602487}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.83208, y: 20.746883, z: -2211.603}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575588588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1404,7 @@ GameObject:
   - component: {fileID: 1894933244}
   - component: {fileID: 1894933243}
   m_Layer: 5
-  m_Name: Start Game
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1515,7 +1474,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1327602488}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
         m_MethodName: OpenScene
         m_Mode: 1
@@ -1571,5 +1530,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 624189593}
   - {fileID: 1596834387}
-  - {fileID: 1327602489}
   - {fileID: 842787357}
