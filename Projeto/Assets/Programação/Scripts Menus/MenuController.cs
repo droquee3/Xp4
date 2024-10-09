@@ -1,92 +1,173 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour
 {
-    public EventSystem eventSystem;
-    public GameObject firstSelected;
-    public GameObject[] buttons;
+    public GameObject[] buttons;  
+    public int hoveredButtonIndex = -1;  
+    public int selectedButtonIndex = 0;  
+    public bool isControlMode = false;   
+    public float inputDelay = 0.2f;
 
-    private int currentIndex = 0;
-    private float moveThreshold = 0.2f; // Limite para movimento do joystick
-    private bool isNavigating = false; // Para verificar se estamos navegando
+    public Vector3 normalScale = new Vector3(1, 1, 1);
+    public Vector3 highlightedScale = new Vector3(1.2f, 1.2f, 1.2f);  // Aumenta 20%
+
+    private float nextInputTime = 0f;  
 
     void Start()
     {
-        if (firstSelected != null)
+        for (int i = 0; i < buttons.Length; i++)
         {
-            eventSystem.SetSelectedGameObject(firstSelected);
-            currentIndex = System.Array.IndexOf(buttons, firstSelected);
-            UpdateButtonVisuals();
+            int index = i;
+            GameObject buttonObj = buttons[i];
+            Button button = buttonObj.GetComponent<Button>();
+
+            if (button != null)
+            {
+                string buttonName = buttonObj.name;
+
+                button.onClick.AddListener(() => ButtonClicked(buttonName));
+
+                buttonObj.transform.localScale = normalScale;
+
+                EventTrigger trigger = buttonObj.AddComponent<EventTrigger>();
+
+                EventTrigger.Entry entryEnter = new EventTrigger.Entry
+                {
+                    eventID = EventTriggerType.PointerEnter
+                };
+                entryEnter.callback.AddListener((eventData) => { OnMouseHover(index); });
+                trigger.triggers.Add(entryEnter);
+
+                EventTrigger.Entry entryExit = new EventTrigger.Entry
+                {
+                    eventID = EventTriggerType.PointerExit
+                };
+                entryExit.callback.AddListener((eventData) => { OnMouseExit(); });
+                trigger.triggers.Add(entryExit);
+            }
         }
     }
 
     void Update()
     {
-        // Captura a entrada do joystick
-        float vertical = Input.GetAxis("Vertical");
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || Input.GetButtonDown("Submit"))
+        {
+            if (!isControlMode)
+            {
+                isControlMode = true;
+                Debug.Log("Modo controle ativado");
+            }
+        }
 
-        // Verifica se a entrada está acima do limite
-        if (vertical > moveThreshold && !isNavigating)
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
-            currentIndex = (currentIndex - 1 + buttons.Length) % buttons.Length;
-            UpdateButtonVisuals();
-            isNavigating = true; // Indica que estamos navegando
+            if (isControlMode)
+            {
+                isControlMode = false;
+                Debug.Log("Modo mouse ativado");
+            }
         }
-        else if (vertical < -moveThreshold && !isNavigating)
+
+        if (isControlMode)
         {
-            currentIndex = (currentIndex + 1) % buttons.Length;
-            UpdateButtonVisuals();
-            isNavigating = true; // Indica que estamos navegando
+            HandleControllerInput();
         }
-        else if (Mathf.Abs(vertical) < moveThreshold)
+    }
+
+    void HandleControllerInput()
+    {
+        if (Time.time < nextInputTime) return;
+
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (verticalInput > 0)  
         {
-            isNavigating = false; // Reseta a navegação ao soltar o joystick
+            selectedButtonIndex = (selectedButtonIndex - 1 + buttons.Length) % buttons.Length;
+            UpdateButtonVisuals();
+            nextInputTime = Time.time + inputDelay;
+        }
+        else if (verticalInput < 0)  
+        {
+            selectedButtonIndex = (selectedButtonIndex + 1) % buttons.Length;
+            UpdateButtonVisuals();
+            nextInputTime = Time.time + inputDelay;
         }
 
         if (Input.GetButtonDown("Submit"))
         {
-            if (eventSystem.currentSelectedGameObject != null)
+            buttons[selectedButtonIndex].GetComponent<Button>().onClick.Invoke();
+        }
+    }
+
+    void UpdateButtonVisuals()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].transform.localScale = (i == selectedButtonIndex) ? highlightedScale : normalScale;
+        }
+    }
+
+    void ButtonClicked(string buttonName)
+    {
+        switch (buttonName)
+        {
+            case "StartButton":
+                StartGame();
+                break;
+            case "OptionsButton":
+                OpenOptions();
+                break;
+            case "QuitButton":
+                QuitGame();
+                break;
+            default:
+                Debug.Log("Botão não reconhecido: " + buttonName);
+                break;
+        }
+    }
+
+    void StartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    void OpenOptions()
+    {
+        Debug.Log("Abrindo opções...");
+    }
+
+    void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Jogo fechado!");
+    }
+
+    public void OnMouseHover(int index)
+    {
+        if (!isControlMode)
+        {
+            for (int i = 0; i < buttons.Length; i++)
             {
-                ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, new PointerEventData(eventSystem), ExecuteEvents.submitHandler);
+                buttons[i].transform.localScale = (i == index) ? highlightedScale : normalScale;
             }
+
+            hoveredButtonIndex = index;
         }
     }
 
-    private void UpdateButtonVisuals()
+    public void OnMouseExit()
     {
-        // Reverte a escala de todos os botões
-        foreach (GameObject button in buttons)
+        if (!isControlMode)
         {
-            button.transform.localScale = Vector3.one; // Escala original
-        }
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].transform.localScale = normalScale;
+            }
 
-        // Aumenta a escala do botão atualmente selecionado
-        buttons[currentIndex].transform.localScale = Vector3.one * 1.1f; // Aumenta a escala
-        eventSystem.SetSelectedGameObject(buttons[currentIndex]);
-    }
-
-    // Métodos para o feedback visual com o mouse
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        // Aumenta a escala do botão quando o mouse entra
-        Transform buttonTransform = eventData.pointerEnter.transform;
-        buttonTransform.localScale = Vector3.one * 1.1f; // Aumenta a escala
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        // Restaura a escala do botão quando o mouse sai
-        Transform buttonTransform = eventData.pointerEnter.transform;
-        buttonTransform.localScale = Vector3.one; // Restaura a escala original
-    }
-
-    public void OnButtonClick()
-    {
-        // Este método é chamado quando o botão é clicado
-        if (eventSystem.currentSelectedGameObject != null)
-        {
-            ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, new PointerEventData(eventSystem), ExecuteEvents.submitHandler);
+            hoveredButtonIndex = -1;
         }
     }
 }
