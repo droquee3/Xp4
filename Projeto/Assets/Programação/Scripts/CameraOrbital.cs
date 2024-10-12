@@ -12,11 +12,11 @@ public class CameraOrbital : MonoBehaviour
     public float yMinLimit = 1f;  
     public float yMaxLimit = 80f; 
     public float minHeight = 1.0f;
+    
+    public float autoRotateSpeed = 5.0f; 
 
     private float x = 0.0f; 
     private float y = 0.0f; 
-
-    private bool isPaused = false; // Variável para controlar o estado de pausa
 
     void Start()
     {
@@ -27,38 +27,28 @@ public class CameraOrbital : MonoBehaviour
 
     void LateUpdate()
     {
-        // Verifica se o jogo está pausado
-        if (isPaused || target == null)
+        if (Time.timeScale > 0)
         {
-            return; // Se estiver pausado, não permite a movimentação da câmera
+            float mouseX = Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+            float mouseY = Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+
+            float rightStickX = Input.GetAxis("Right Stick X") * xSpeed * 0.1f;
+            float rightStickY = Input.GetAxis("Right Stick Y") * ySpeed * 0.1f;
+
+            x += mouseX + rightStickX;
+            y -= mouseY + rightStickY;
+        }
+        else
+        {
+            x -= autoRotateSpeed * Time.unscaledDeltaTime; 
         }
 
-        // Calcula os inputs do mouse e do joystick
-        float mouseX = Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-        float mouseY = Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
-
-        float rightStickX = Input.GetAxis("Right Stick X") * xSpeed * 0.1f;
-        float rightStickY = Input.GetAxis("Right Stick Y") * ySpeed * 0.1f;
-
-        // Atualiza os ângulos de rotação da câmera
-        x += mouseX + rightStickX;
-        y -= mouseY + rightStickY;
-
-        // Limita a rotação vertical
         y = Mathf.Clamp(y, yMinLimit, yMaxLimit);
 
-        // Calcula a nova rotação e posição da câmera
         Quaternion rotation = Quaternion.Euler(y, x, 0);
         Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;
 
-        // Aplica a rotação e a posição à câmera
         transform.rotation = rotation;
         transform.position = position;
-    }
-
-    // Função para definir o estado de pausa
-    public void SetPauseState(bool paused)
-    {
-        isPaused = paused;
     }
 }
