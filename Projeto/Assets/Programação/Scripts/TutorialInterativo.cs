@@ -5,25 +5,46 @@ using UnityEngine;
 
 public class TutorialInterativo : MonoBehaviour
 {
-    public GameObject movimentoTexto;  
-    public GameObject puloTexto;       
+    public GameObject movimentoTexto;
+    public GameObject puloTexto;
+    public float tempoLimite = 10f;
 
     private bool movimentoCompletado = false;
     private bool puloCompletado = false;
+    private float timer = 0f;
+    private bool tutorialFinalizado = false;
+
+    void Start()
+    {
+        puloTexto.SetActive(false);
+    }
 
     void Update()
     {
-       
-        if (!movimentoCompletado && VerificarMovimento())
+        if (!tutorialFinalizado)
         {
-            movimentoCompletado = true;
-            movimentoTexto.SetActive(false);
-            puloTexto.SetActive(true);       
-        }
-        if (movimentoCompletado && !puloCompletado && VerificarPulo())
-        {
-            puloCompletado = true;
-            puloTexto.SetActive(false);      
+            timer += Time.deltaTime;
+
+            if (!movimentoCompletado && VerificarMovimento())
+            {
+                movimentoCompletado = true;
+                movimentoTexto.SetActive(false);
+                puloTexto.SetActive(true);
+            }
+
+            if (movimentoCompletado && !puloCompletado && VerificarPulo())
+            {
+                puloCompletado = true;
+                puloTexto.SetActive(false);
+                tutorialFinalizado = true;
+            }
+
+            if (timer >= tempoLimite)
+            {
+                movimentoTexto.SetActive(false);
+                puloTexto.SetActive(false);
+                tutorialFinalizado = true;
+            }
         }
     }
 
