@@ -2,24 +2,24 @@ using UnityEngine;
 
 public class ProgressBar : MonoBehaviour
 {
-    public float maxHeight = 1f;           
-    public float decreaseRate = 0.1f;       
-    public float delayBeforeStart = 2f;     
-    public float resetDelay = 3f;           
-    public GameObject player;              
-    private Vector3 respawnPosition;      
+    public float maxHeight = 1f;
+    public float decreaseRate = 0.1f;
+    public float delayBeforeStart = 2f;
+    public float resetDelay = 3f;
+    public GameObject player;
+    private Vector3 respawnPosition;
 
     private float currentHeight;
-    private float elapsedTime = 0f;        
-    private float resetElapsedTime = 0f;   
-    private bool isResetting = false;      
-    private bool isDecreasing = true;       
-    private bool isOxygenDepleted = false;  
+    private float elapsedTime = 0f;
+    private float resetElapsedTime = 0f;
+    private bool isResetting = false;
+    private bool isDecreasing = true;
+    private bool isOxygenDepleted = false;
     void Start()
     {
-      
+
         currentHeight = maxHeight;
-        respawnPosition = player.transform.position; 
+        respawnPosition = player.transform.position;
         UpdateScale();
     }
 
@@ -33,7 +33,7 @@ public class ProgressBar : MonoBehaviour
             {
                 isResetting = false;
                 isDecreasing = true;
-                elapsedTime = 0f; 
+                elapsedTime = 0f;
             }
         }
         else if (isDecreasing && !isOxygenDepleted)
@@ -49,7 +49,7 @@ public class ProgressBar : MonoBehaviour
 
                 if (currentHeight <= 0)
                 {
-                    OxygenDepleted(); 
+                    OxygenDepleted();
                 }
             }
         }
@@ -57,13 +57,13 @@ public class ProgressBar : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.CompareTag("Checkpoint") && !isResetting && !isOxygenDepleted)
         {
             currentHeight = maxHeight;
             UpdateScale();
 
-         
+
             respawnPosition = other.transform.position;
 
             isResetting = true;
@@ -72,26 +72,26 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    
+
     void OxygenDepleted()
     {
         isOxygenDepleted = true;
 
-        
+
         player.SetActive(false);
 
-       
+
         Invoke("RespawnPlayer", 2f);
     }
 
     void RespawnPlayer()
     {
-       
+
         player.transform.position = respawnPosition;
-        currentHeight = maxHeight; 
-        isOxygenDepleted = false; 
-        player.SetActive(true); 
-        enabled = true; 
+        currentHeight = maxHeight;
+        isOxygenDepleted = false;
+        player.SetActive(true);
+        enabled = true;
     }
 
     void UpdateScale()
@@ -99,4 +99,9 @@ public class ProgressBar : MonoBehaviour
 
         transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
     }
-}
+
+    public void ModifyDecreaseRate(float offset)
+    {
+        decreaseRate += offset;
+    }
+ }

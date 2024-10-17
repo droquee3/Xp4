@@ -11,6 +11,10 @@ public class OlhosPerseguidores : MonoBehaviour
     public int maxNumberOfEyes = 5;
     public float spawnInterval = 1f;
     public LayerMask groundLayerMask;
+    public ProgressBar progressBar;
+    public float proximityThreshold = 5f;
+    public float reductionOffset = 0.01f;
+
     private bool isSpawning = false;
     private List<GameObject> spawnedEyes = new List<GameObject>();
     private bool playerInsideTrigger = false;
@@ -86,17 +90,26 @@ public class OlhosPerseguidores : MonoBehaviour
         isSpawning = false;
     }
 
-
     IEnumerator MoveEyeTowardsPlayer(GameObject eye)
     {
         while (eye != null && playerInsideTrigger)
         {
-            Vector3 direction = (player.position - eye.transform.position).normalized;
+            Vector3 targetPosition = player.position;
+            targetPosition.y = player.position.y + 1 / 2f; 
+
+            Vector3 direction = (targetPosition - eye.transform.position).normalized;
             eye.transform.position += direction * moveSpeed * Time.deltaTime;
+
             Quaternion targetRotation = Quaternion.LookRotation(-direction);
             eye.transform.rotation = Quaternion.Slerp(eye.transform.rotation, targetRotation, 0.1f);
 
-            if (Vector3.Distance(eye.transform.position, player.position) < 0.5f)
+            float distanceToPlayer = Vector3.Distance(eye.transform.position, player.position);
+            if (distanceToPlayer < proximityThreshold)
+            {
+                progressBar.ModifyDecreaseRate(reductionOffset);
+            }
+
+            if (distanceToPlayer < 0.5f)
             {
                 Destroy(eye);
                 spawnedEyes.Remove(eye);

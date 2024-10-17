@@ -708,6 +708,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6234336138191656783, guid: 308ff987251a37b43bd95b071fad28a7,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6759655664894283253, guid: 308ff987251a37b43bd95b071fad28a7,
         type: 3}
       propertyPath: m_Name
@@ -789,6 +794,11 @@ PrefabInstance:
     - target: {fileID: 4087399860137143229, guid: 48799624408b4cd419b72c970c54ffab,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087399860137143229, guid: 48799624408b4cd419b72c970c54ffab,
+        type: 3}
+      propertyPath: m_IsGlobal
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7692791389189794122, guid: 48799624408b4cd419b72c970c54ffab,
@@ -1307,6 +1317,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240946861}
   m_CullTransparentMesh: 1
+--- !u!114 &241550122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3817112338401263752, guid: 6c38096cca0461d45bd9c2488aca0528,
+    type: 3}
+  m_PrefabInstance: {fileID: 1196778252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5005f3cd7bcdf4694d15f634b44885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &245817713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13751,6 +13773,11 @@ PrefabInstance:
       propertyPath: decreaseRate
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 3817112338401263752, guid: 6c38096cca0461d45bd9c2488aca0528,
+        type: 3}
+      propertyPath: reductionOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4022186750202952792, guid: 6c38096cca0461d45bd9c2488aca0528,
         type: 3}
       propertyPath: player
@@ -13851,7 +13878,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4022186750202952792, guid: 6c38096cca0461d45bd9c2488aca0528, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -15231,7 +15259,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -20512,7 +20540,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -26400,7 +26428,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -26616,11 +26644,14 @@ MonoBehaviour:
   player: {fileID: 1389341320}
   spawnRadius: 5
   moveSpeed: 0.3
-  maxNumberOfEyes: 5
+  maxNumberOfEyes: 1
   spawnInterval: 5
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1
+  progressBar: {fileID: 241550122}
+  proximityThreshold: 5
+  reductionOffset: 0.00003
 --- !u!65 &1994310830
 BoxCollider:
   m_ObjectHideFlags: 0
