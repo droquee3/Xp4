@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class UnderwaterMovement : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class UnderwaterMovement : MonoBehaviour
     private bool isGrounded = true;
     private bool isSwimming = false;
     private float startYPosition; // Armazenar a altura inicial ao pular
+    public ProgressBar progressBar;
+    public float swimOxygenReductionRate = 0.02f;
 
     void Start()
     {
@@ -47,7 +50,6 @@ public class UnderwaterMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
 
-            // Aplicar a velocidade de queda ao personagem quando não estiver nadando
             if (rb.velocity.y < 0)
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallSpeed - 1) * Time.deltaTime;
@@ -63,9 +65,10 @@ public class UnderwaterMovement : MonoBehaviour
             }
             else
             {
-                // Usar a velocidade de queda especificada para o modo nado
                 rb.velocity = new Vector3(rb.velocity.x, -swimFallSpeed, rb.velocity.z);
             }
+
+            progressBar.ModifyDecreaseRate(swimOxygenReductionRate); 
         }
 
         if (movement != Vector3.zero)
@@ -82,7 +85,6 @@ public class UnderwaterMovement : MonoBehaviour
             }
         }
 
-        // Checar se o jogador está no ar e se segurando a barra de espaço após atingir certa altura
         if (!isGrounded && Input.GetButton("Jump"))
         {
             float currentYPosition = transform.position.y;
@@ -106,11 +108,12 @@ public class UnderwaterMovement : MonoBehaviour
 
         if (!isSwimming)
         {
-            rb.useGravity = true; // Reativar gravidade ao sair do modo nado
+            rb.useGravity = true;
+            progressBar.ModifyDecreaseRate(-swimOxygenReductionRate); 
         }
         else
         {
-            rb.useGravity = false; // Desativar gravidade ao nadar
+            rb.useGravity = false;
         }
     }
 

@@ -735,6 +735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8178864485736349721, guid: 308ff987251a37b43bd95b071fad28a7,
         type: 3}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 241550122}
+    - target: {fileID: 8178864485736349721, guid: 308ff987251a37b43bd95b071fad28a7,
+        type: 3}
       propertyPath: rotationSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -743,6 +748,11 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 557805181}
+    - target: {fileID: 8178864485736349721, guid: 308ff987251a37b43bd95b071fad28a7,
+        type: 3}
+      propertyPath: swimOxygenReductionRate
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 8327159959698227913, guid: 308ff987251a37b43bd95b071fad28a7,
         type: 3}
       propertyPath: m_Constraints
