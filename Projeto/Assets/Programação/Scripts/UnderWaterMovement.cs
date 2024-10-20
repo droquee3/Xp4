@@ -68,7 +68,15 @@ public class UnderwaterMovement : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, -swimFallSpeed, rb.velocity.z);
             }
 
-            progressBar.ModifyDecreaseRate(swimOxygenReductionRate); 
+            // Gasta oxigênio apenas quando está subindo
+            if (rb.velocity.y > 0)
+            {
+                progressBar.ModifyDecreaseRate(swimOxygenReductionRate);
+            }
+            else
+            {
+                progressBar.ModifyDecreaseRate(0); // Para de gastar oxigênio se não estiver subindo
+            }
         }
 
         if (movement != Vector3.zero)
@@ -95,6 +103,7 @@ public class UnderwaterMovement : MonoBehaviour
         }
     }
 
+
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -109,7 +118,7 @@ public class UnderwaterMovement : MonoBehaviour
         if (!isSwimming)
         {
             rb.useGravity = true;
-            progressBar.ModifyDecreaseRate(-swimOxygenReductionRate); 
+            progressBar.ModifyDecreaseRate(-swimOxygenReductionRate);
         }
         else
         {
