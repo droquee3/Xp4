@@ -23,8 +23,13 @@ public class UnderwaterMovement : MonoBehaviour
     private float previousYPosition;
     private float defaultOxygenReductionRate = 0.02f;
 
+    // Animacao
+    private Animator animator;
+
+
     void Start()
     {
+        animator = GetComponent<Animator>(); //animacao
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
 
@@ -92,6 +97,11 @@ public class UnderwaterMovement : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            animator.SetBool("IsMoving", true); // animacao para mexer
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false); // animacao para parar
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -99,6 +109,7 @@ public class UnderwaterMovement : MonoBehaviour
             if (isGrounded)
             {
                 Jump();
+                animator.SetTrigger("Jump");
             }
         }
 

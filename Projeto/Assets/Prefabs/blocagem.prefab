@@ -157,6 +157,11 @@ MonoBehaviour:
   jumpForce: 5
   swimSpeed: 3
   riseSpeed: 1.5
-  fallMultiplier: 0.5
+  fallSpeed: 1.5
+  swimFallSpeed: 1
+  rotationSpeed: 5
+  minSwimHeight: 0.5
   rb: {fileID: 8327159959698227913}
   cameraTransform: {fileID: 0}
+  progressBar: {fileID: 0}
+  swimOxygenReductionRate: 0.02
