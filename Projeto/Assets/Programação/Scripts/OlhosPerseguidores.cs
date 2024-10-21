@@ -13,7 +13,8 @@ public class OlhosPerseguidores : MonoBehaviour
     public LayerMask groundLayerMask;
     public ProgressBar progressBar;
     public float proximityThreshold = 5f;
-    public float reductionOffset = 0.01f;
+    public float reductionOffset = 0.2f;
+    public float normalDecreaseRate = 0.1f; 
 
     private bool isSpawning = false;
     private List<GameObject> spawnedEyes = new List<GameObject>();
@@ -37,6 +38,7 @@ public class OlhosPerseguidores : MonoBehaviour
         {
             playerInsideTrigger = false;
             StopAllEyes();
+            progressBar.ModifyDecreaseRate(normalDecreaseRate);
         }
     }
 
@@ -95,7 +97,7 @@ public class OlhosPerseguidores : MonoBehaviour
         while (eye != null && playerInsideTrigger)
         {
             Vector3 targetPosition = player.position;
-            targetPosition.y = player.position.y + 1 / 2f; 
+            targetPosition.y = player.position.y + 1 / 2f;
 
             Vector3 direction = (targetPosition - eye.transform.position).normalized;
             eye.transform.position += direction * moveSpeed * Time.deltaTime;
@@ -106,7 +108,11 @@ public class OlhosPerseguidores : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(eye.transform.position, player.position);
             if (distanceToPlayer < proximityThreshold)
             {
-                progressBar.ModifyDecreaseRate(reductionOffset);
+                progressBar.ModifyDecreaseRateForEyes(reductionOffset); 
+            }
+            else
+            {
+                progressBar.ModifyDecreaseRate(normalDecreaseRate);
             }
 
             if (distanceToPlayer < 0.5f)

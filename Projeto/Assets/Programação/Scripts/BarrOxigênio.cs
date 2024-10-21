@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProgressBar : MonoBehaviour
 {
     public float maxHeight = 1f;
-    public float decreaseRate = 0.1f;
+    public float decreaseRate;
     public float delayBeforeStart = 2f;
     public float resetDelay = 3f;
     public GameObject player;
@@ -15,9 +15,9 @@ public class ProgressBar : MonoBehaviour
     private bool isResetting = false;
     private bool isDecreasing = true;
     private bool isOxygenDepleted = false;
+
     void Start()
     {
-
         currentHeight = maxHeight;
         respawnPosition = player.transform.position;
         UpdateScale();
@@ -28,7 +28,6 @@ public class ProgressBar : MonoBehaviour
         if (isResetting)
         {
             resetElapsedTime += Time.deltaTime;
-
             if (resetElapsedTime >= resetDelay)
             {
                 isResetting = false;
@@ -39,14 +38,11 @@ public class ProgressBar : MonoBehaviour
         else if (isDecreasing && !isOxygenDepleted)
         {
             elapsedTime += Time.deltaTime;
-
             if (elapsedTime >= delayBeforeStart)
             {
                 currentHeight -= decreaseRate * Time.deltaTime;
                 currentHeight = Mathf.Clamp(currentHeight, 0, maxHeight);
-
                 UpdateScale();
-
                 if (currentHeight <= 0)
                 {
                     OxygenDepleted();
@@ -57,13 +53,10 @@ public class ProgressBar : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag("Checkpoint") && !isResetting && !isOxygenDepleted)
         {
             currentHeight = maxHeight;
             UpdateScale();
-
-
             respawnPosition = other.transform.position;
 
             isResetting = true;
@@ -72,21 +65,15 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-
     void OxygenDepleted()
     {
         isOxygenDepleted = true;
-
-
         player.SetActive(false);
-
-
         Invoke("RespawnPlayer", 2f);
     }
 
     void RespawnPlayer()
     {
-
         player.transform.position = respawnPosition;
         currentHeight = maxHeight;
         isOxygenDepleted = false;
@@ -96,12 +83,17 @@ public class ProgressBar : MonoBehaviour
 
     void UpdateScale()
     {
-
         transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
     }
 
     public void ModifyDecreaseRate(float offset)
     {
-        decreaseRate += offset;
+        decreaseRate = 0f + offset;
     }
- }
+
+
+    public void ModifyDecreaseRateForEyes(float offset)
+    {
+        decreaseRate = offset; 
+    }
+}

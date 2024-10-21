@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -8,17 +9,19 @@ public class UnderwaterMovement : MonoBehaviour
     public float jumpForce = 5f;
     public float swimSpeed = 3f;
     public float riseSpeed = 1.5f;
-    public float fallSpeed = 1.5f; // Velocidade de queda após pulo
-    public float swimFallSpeed = 1.0f; // Velocidade de queda no modo nado
+    public float fallSpeed = 1.5f;
+    public float swimFallSpeed = 1.0f;
     public float rotationSpeed = 5f;
-    public float minSwimHeight = 0.5f; // Altura mínima para ativar o modo de nado
+    public float minSwimHeight = 0.5f;
     public Rigidbody rb;
     public Transform cameraTransform;
     private bool isGrounded = true;
     private bool isSwimming = false;
-    private float startYPosition; // Armazenar a altura inicial ao pular
+    private float startYPosition;
     public ProgressBar progressBar;
     public float swimOxygenReductionRate = 0.02f;
+    private float previousYPosition;
+    private float defaultOxygenReductionRate = 0.02f;
 
     void Start()
     {
@@ -29,6 +32,9 @@ public class UnderwaterMovement : MonoBehaviour
         {
             cameraTransform = GetComponent<Transform>();
         }
+
+        previousYPosition = transform.position.y;
+        progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
     }
 
     void Update()
@@ -68,15 +74,18 @@ public class UnderwaterMovement : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, -swimFallSpeed, rb.velocity.z);
             }
 
-            // Gasta oxigênio apenas quando está subindo
-            if (rb.velocity.y > 0)
+            float currentYPosition = transform.position.y;
+
+            if (currentYPosition > previousYPosition)
             {
-                progressBar.ModifyDecreaseRate(swimOxygenReductionRate);
+                progressBar.ModifyDecreaseRate(swimOxygenReductionRate); 
             }
             else
             {
-                progressBar.ModifyDecreaseRate(0); // Para de gastar oxigênio se não estiver subindo
+                progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
             }
+
+            previousYPosition = currentYPosition;
         }
 
         if (movement != Vector3.zero)
@@ -96,19 +105,18 @@ public class UnderwaterMovement : MonoBehaviour
         if (!isGrounded && Input.GetButton("Jump"))
         {
             float currentYPosition = transform.position.y;
-            if (currentYPosition - startYPosition > minSwimHeight && !isSwimming)
+            if (currentYPosition - previousYPosition > minSwimHeight && !isSwimming)
             {
                 ToggleSwimMode();
             }
         }
     }
 
-
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
-        startYPosition = transform.position.y; // Armazenar a posição ao pular
+        startYPosition = transform.position.y;
     }
 
     void ToggleSwimMode()
@@ -118,7 +126,7 @@ public class UnderwaterMovement : MonoBehaviour
         if (!isSwimming)
         {
             rb.useGravity = true;
-            progressBar.ModifyDecreaseRate(-swimOxygenReductionRate);
+            progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
         }
         else
         {
@@ -134,6 +142,7 @@ public class UnderwaterMovement : MonoBehaviour
             if (isSwimming)
             {
                 ToggleSwimMode();
+                progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
             }
         }
     }
