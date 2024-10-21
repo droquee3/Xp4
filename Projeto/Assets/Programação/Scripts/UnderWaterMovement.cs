@@ -21,7 +21,7 @@ public class UnderwaterMovement : MonoBehaviour
     public ProgressBar progressBar;
     public float swimOxygenReductionRate = 0.02f;
     private float previousYPosition;
-    private float defaultOxygenReductionRate = 0.02f;
+    private float defaultOxygenReductionRate = 0.01f;
 
     // Animacao
     private Animator animator;

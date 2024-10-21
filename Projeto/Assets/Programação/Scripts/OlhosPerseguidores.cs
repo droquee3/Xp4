@@ -14,7 +14,7 @@ public class OlhosPerseguidores : MonoBehaviour
     public ProgressBar progressBar;
     public float proximityThreshold = 5f;
     public float reductionOffset = 0.2f;
-    public float normalDecreaseRate = 0.1f; 
+    public float normalDecreaseRate = 0.01f; 
 
     private bool isSpawning = false;
     private List<GameObject> spawnedEyes = new List<GameObject>();
@@ -36,6 +36,7 @@ public class OlhosPerseguidores : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Entrou na zona");
             playerInsideTrigger = false;
             StopAllEyes();
             progressBar.ModifyDecreaseRate(normalDecreaseRate);
