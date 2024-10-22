@@ -777,7 +777,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (2)
+      value: Olho Spawn 3
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -13271,7 +13271,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (7)
+      value: Barreira 4
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -13391,7 +13391,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (1)
+      value: Barreira 3
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -21022,7 +21022,7 @@ PrefabInstance:
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -21072,7 +21072,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (3)
+      value: Olho Spawn
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -22904,7 +22904,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (6)
+      value: Barreira 1
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -23466,7 +23466,7 @@ PrefabInstance:
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2217.8323
+      value: -2214.816
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
@@ -25317,7 +25317,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (5)
+      value: Olho Spawn 2
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -31336,8 +31336,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729649862}
-  - component: {fileID: 1729649861}
   - component: {fileID: 1729649860}
+  - component: {fileID: 1729649863}
   m_Layer: 0
   m_Name: Zona de Risco (1)
   m_TagString: Untagged
@@ -31359,19 +31359,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyePrefab: {fileID: 1981845068}
   player: {fileID: 2114654755}
-  spawnRadius: 10
+  spawnRadius: 5
   moveSpeed: 0.2
   maxNumberOfEyes: 5
   spawnInterval: 5
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
   progressBar: {fileID: 241550122}
   proximityThreshold: 5
   reductionOffset: 0.2
   normalDecreaseRate: 0.01
---- !u!65 &1729649861
-BoxCollider:
+--- !u!4 &1729649862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729649859}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 56.6, y: 31.8, z: -2151.6}
+  m_LocalScale: {x: 44.19878, y: 28.335255, z: 23.604849}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1729649863
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31389,23 +31401,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1729649862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729649859}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.9, y: 36.32, z: -2152.7}
-  m_LocalScale: {x: 44.19878, y: 1, z: 23.604849}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Radius: 0.39244485
+  m_Center: {x: 0, y: 0.16777012, z: 0}
 --- !u!1 &1747969766
 GameObject:
   m_ObjectHideFlags: 0
@@ -32605,7 +32602,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira
+      value: Olho Spawn 4
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -38263,7 +38260,7 @@ PrefabInstance:
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_Name
-      value: Barreira (4)
+      value: Barreira 2
       objectReference: {fileID: 0}
     - target: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -38472,8 +38469,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1994310831}
-  - component: {fileID: 1994310830}
   - component: {fileID: 1994310829}
+  - component: {fileID: 1994310832}
   m_Layer: 0
   m_Name: Zona de Risco
   m_TagString: Untagged
@@ -38499,15 +38496,27 @@ MonoBehaviour:
   moveSpeed: 0.5
   maxNumberOfEyes: 5
   spawnInterval: 3
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
   progressBar: {fileID: 241550122}
   proximityThreshold: 5
   reductionOffset: 0.1
   normalDecreaseRate: 0.01
---- !u!65 &1994310830
-BoxCollider:
+--- !u!4 &1994310831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994310828}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 142.13, y: 39.73, z: -2185.42}
+  m_LocalScale: {x: 30.543001, y: 1, z: 46.136253}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1994310832
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -38525,23 +38534,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1994310831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994310828}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 143.59, y: 39.73, z: -2198.2}
-  m_LocalScale: {x: 30.543001, y: 1, z: 46.136253}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1997360277 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7507755434655587312, guid: d60ae19ec78ddac4780fd650480be138,

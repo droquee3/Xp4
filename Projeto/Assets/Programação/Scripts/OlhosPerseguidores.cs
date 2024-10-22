@@ -10,11 +10,10 @@ public class OlhosPerseguidores : MonoBehaviour
     public float moveSpeed = 2f;
     public int maxNumberOfEyes = 5;
     public float spawnInterval = 1f;
-    public LayerMask groundLayerMask;
     public ProgressBar progressBar;
     public float proximityThreshold = 5f;
     public float reductionOffset = 0.2f;
-    public float normalDecreaseRate = 0.01f; 
+    public float normalDecreaseRate = 0.01f;
 
     private bool isSpawning = false;
     private List<GameObject> spawnedEyes = new List<GameObject>();
@@ -22,7 +21,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !progressBar.isOxygenDepleted) 
         {
             playerInsideTrigger = true;
             if (!isSpawning && spawnedEyes.Count < maxNumberOfEyes)
@@ -34,6 +33,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        Debug.Log("Saiu da zona");
         if (other.CompareTag("Player"))
         {
             Debug.Log("Entrou na zona");
@@ -60,7 +60,7 @@ public class OlhosPerseguidores : MonoBehaviour
     {
         isSpawning = true;
 
-        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger)
+        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted) 
         {
             Vector3 randomPosition;
             bool validPosition = false;
@@ -95,7 +95,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     IEnumerator MoveEyeTowardsPlayer(GameObject eye)
     {
-        while (eye != null && playerInsideTrigger)
+        while (eye != null && playerInsideTrigger && !progressBar.isOxygenDepleted) 
         {
             Vector3 targetPosition = player.position;
             targetPosition.y = player.position.y + 1 / 2f;
@@ -109,7 +109,7 @@ public class OlhosPerseguidores : MonoBehaviour
             float distanceToPlayer = Vector3.Distance(eye.transform.position, player.position);
             if (distanceToPlayer < proximityThreshold)
             {
-                progressBar.ModifyDecreaseRateForEyes(reductionOffset); 
+                progressBar.ModifyDecreaseRateForEyes(reductionOffset);
             }
             else
             {
@@ -128,6 +128,14 @@ public class OlhosPerseguidores : MonoBehaviour
         if (eye != null)
         {
             Destroy(eye);
+        }
+    }
+
+    void Update()
+    {
+        if (progressBar.isOxygenDepleted)
+        {
+            StopAllEyes();
         }
     }
 }

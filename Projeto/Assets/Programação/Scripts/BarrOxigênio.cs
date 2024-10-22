@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour
     private float resetElapsedTime = 0f;
     private bool isResetting = false;
     private bool isDecreasing = true;
-    private bool isOxygenDepleted = false;
+   public bool isOxygenDepleted = false;
 
     void Start()
     {
