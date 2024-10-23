@@ -14,7 +14,10 @@ public class ProgressBar : MonoBehaviour
     private float resetElapsedTime = 0f;
     private bool isResetting = false;
     private bool isDecreasing = true;
-   public bool isOxygenDepleted = false;
+    public bool isOxygenDepleted = false;
+
+    private float defaultDecreaseRate;
+    private float giantEyeDecreaseRate;
 
     void Start()
     {
@@ -95,5 +98,16 @@ public class ProgressBar : MonoBehaviour
     public void ModifyDecreaseRateForEyes(float offset)
     {
         decreaseRate = offset; 
+    }
+
+    public void ModifyDecreaseRateForGiantEye(float extraRate)
+    {
+        giantEyeDecreaseRate = extraRate;
+        decreaseRate += giantEyeDecreaseRate; 
+    }
+
+    public void ResetDecreaseRateAfterGiantEye()
+    {
+        decreaseRate = defaultDecreaseRate; 
     }
 }
