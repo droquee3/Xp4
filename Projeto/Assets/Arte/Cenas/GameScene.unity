@@ -14079,7 +14079,7 @@ Transform:
   m_GameObject: {fileID: 575581131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.39, y: 37.22, z: -2182.94}
+  m_LocalPosition: {x: -0.13, y: 37.22, z: -2182.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21001,13 +21001,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
+      propertyPath: oxygenBar
+      value: 
+      objectReference: {fileID: 241550122}
+    - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
       propertyPath: activeTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
+      propertyPath: requiredDistance
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 24.519934
+      value: 6.7817235
       objectReference: {fileID: 0}
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -21022,7 +21032,7 @@ PrefabInstance:
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7
+      value: -4.8
       objectReference: {fileID: 0}
     - target: {fileID: 5442038620965717235, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
@@ -22572,37 +22582,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9cc77665949aa41aa6d4b757ad74ff, type: 3}
---- !u!1 &1242519811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1242519812}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1242519812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242519811}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 4.36, z: -0.33}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250676972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8788213502293173257, guid: d60ae19ec78ddac4780fd650480be138,
@@ -23418,10 +23397,35 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 549140422719852283, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057884250663597912, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680266999018939129, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806893586142026557, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3571820641431997698, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795239418385917892, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5180806456022357040, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
@@ -23508,6 +23512,36 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5542038964509137793, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070003074933865449, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232897902626844536, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7200260334259546337, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265624390754221309, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450510695894381423, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: rb
@@ -23527,6 +23561,11 @@ PrefabInstance:
         type: 3}
       propertyPath: swimOxygenReductionRate
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8117532139046115775, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39495,5 +39534,4 @@ SceneRoots:
   - {fileID: 773200285}
   - {fileID: 1626602230}
   - {fileID: 1505358529}
-  - {fileID: 1242519812}
   - {fileID: 1356275668}
