@@ -68,6 +68,18 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    public void ReduceOnCollision(float amount)
+    {
+        currentHeight -= amount;
+        currentHeight = Mathf.Clamp(currentHeight, 0, maxHeight);
+        UpdateScale();
+
+        if (currentHeight <= 0)
+        {
+            OxygenDepleted();
+        }
+    }
+
     void OxygenDepleted()
     {
         isOxygenDepleted = true;
