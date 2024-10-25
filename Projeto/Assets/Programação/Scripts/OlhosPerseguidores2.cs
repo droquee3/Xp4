@@ -58,7 +58,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
         while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted)
         {
             Vector3 randomPosition = player.position + (Random.insideUnitSphere * spawnRadius);
-            randomPosition.y = player.position.y + Random.Range(1f, 2f); // Manter a altura do jogador + uma pequena variação
+            randomPosition.y = player.position.y + Random.Range(1f, 2f);
 
             GameObject eye = Instantiate(eyePrefab, randomPosition, Quaternion.identity);
             spawnedEyes.Add(eye);
