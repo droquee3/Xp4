@@ -828,7 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91272912}
   - component: {fileID: 91272911}
-  - component: {fileID: 91272910}
+  - component: {fileID: 91272913}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -836,27 +836,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &91272910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91272909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9f2f3aa42663847b1fbd429a370b8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eyePrefab: {fileID: 2125556940624310633, guid: bba37fb148368d4408763743139e195f,
-    type: 3}
-  player: {fileID: 2114654755}
-  spawnRadius: 5
-  moveSpeed: 2
-  maxNumberOfEyes: 1
-  spawnInterval: 1
-  progressBar: {fileID: 241550122}
-  reductionAmount: 0.863916
 --- !u!65 &91272911
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -893,6 +872,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &91272913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91272909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9f2f3aa42663847b1fbd429a370b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyePrefab: {fileID: 2125556940624310633, guid: bba37fb148368d4408763743139e195f,
+    type: 3}
+  player: {fileID: 2114654755}
+  spawnRadius: 5
+  moveSpeed: 0.5
+  maxNumberOfEyes: 1
+  spawnInterval: 1
+  progressBar: {fileID: 241550122}
+  reductionAmount: 0.863916
 --- !u!1001 &91630122
 PrefabInstance:
   m_ObjectHideFlags: 0

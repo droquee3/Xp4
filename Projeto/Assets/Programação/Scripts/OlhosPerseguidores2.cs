@@ -63,49 +63,13 @@ public class OlhosPerseguidores2 : MonoBehaviour
             GameObject eye = Instantiate(eyePrefab, randomPosition, Quaternion.identity);
             spawnedEyes.Add(eye);
 
-            ParticleSystem explosionEffect = eye.GetComponentInChildren<ParticleSystem>(true);
-            if (explosionEffect != null) explosionEffect.gameObject.SetActive(false);
-
-            StartCoroutine(MoveEyeTowardsPlayer(eye, explosionEffect));
+            OlhosComportamento eyeBehavior = eye.AddComponent<OlhosComportamento>();
+            eyeBehavior.Initialize(player, moveSpeed, reductionAmount, progressBar);
 
             yield return new WaitForSeconds(spawnInterval);
         }
 
         isSpawning = false;
-    }
-
-    IEnumerator MoveEyeTowardsPlayer(GameObject eye, ParticleSystem explosionEffect)
-    {
-        while (eye != null && playerInsideTrigger && !progressBar.isOxygenDepleted)
-        {
-            Vector3 direction = (player.position - eye.transform.position).normalized;
-            eye.transform.position += direction * moveSpeed * Time.deltaTime;
-
-            Quaternion targetRotation = Quaternion.LookRotation(-direction);
-            eye.transform.rotation = Quaternion.Slerp(eye.transform.rotation, targetRotation, 0.1f);
-
-            if (Vector3.Distance(eye.transform.position, player.position) < 0.5f)
-            {
-                if (explosionEffect != null)
-                {
-                    explosionEffect.gameObject.SetActive(true);
-                    explosionEffect.transform.position = eye.transform.position; 
-                    explosionEffect.Play();
-                }
-
-                spawnedEyes.Remove(eye);
-                Destroy(eye); 
-                progressBar.ReduceOnCollision(reductionAmount);
-                yield break;
-            }
-
-            yield return null;
-        }
-
-        if (eye != null)
-        {
-            Destroy(eye);
-        }
     }
 
     void Update()
