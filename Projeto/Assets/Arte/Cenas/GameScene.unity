@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21444,6 +21444,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
         type: 3}
+      propertyPath: zoomDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
+      propertyPath: cameraOrbital
+      value: 
+      objectReference: {fileID: 557805177}
+    - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
+      propertyPath: zoomOutDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321341246453360297, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
       propertyPath: requiredDistance
       value: 10
       objectReference: {fileID: 0}
@@ -21526,7 +21541,11 @@ PrefabInstance:
     - {fileID: 1542386200191261909, guid: 0e6cc2895db5b5547997fae76b406a2b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1283096477}
   m_SourcePrefab: {fileID: 100100000, guid: 0e6cc2895db5b5547997fae76b406a2b, type: 3}
 --- !u!1 &943720169 stripped
 GameObject:
@@ -23223,6 +23242,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266912631}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1283096476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6396909120952867080, guid: 0e6cc2895db5b5547997fae76b406a2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 923855145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1283096477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283096476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718b4034981f92d449b4617da142a79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOrbital: {fileID: 557805177}
+  zoomOutDistance: 10
+  zoomDuration: 3
+  smoothTime: 2
 --- !u!1 &1288830893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8304748919303006212, guid: d60ae19ec78ddac4780fd650480be138,

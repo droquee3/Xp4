@@ -9,8 +9,8 @@ public class OlhoGigante : MonoBehaviour
     public float activeTime = 5f;
     public float offsetY = 5f;
     public float offsetZ = 10f;
-    public ProgressBar oxygenBar; 
-    public float oxygenIncreaseRate = 0.05f; 
+    public ProgressBar oxygenBar;
+    public float oxygenIncreaseRate = 0.05f;
 
     private bool eyeActivated = false;
     private float deactivateTimer = 0f;
