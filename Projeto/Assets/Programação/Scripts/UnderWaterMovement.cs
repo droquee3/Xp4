@@ -23,13 +23,11 @@ public class UnderwaterMovement : MonoBehaviour
     private float previousYPosition;
     private float defaultOxygenReductionRate = 0.01f;
 
-    // Animacao
     private Animator animator;
-
 
     void Start()
     {
-        animator = GetComponent<Animator>(); //animacao
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
 
@@ -39,7 +37,7 @@ public class UnderwaterMovement : MonoBehaviour
         }
 
         previousYPosition = transform.position.y;
-        progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
+        progressBar.ModifyDecreaseRate(defaultOxygenReductionRate);
     }
 
     void Update()
@@ -49,9 +47,7 @@ public class UnderwaterMovement : MonoBehaviour
 
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
-
-        forward.y = 0;
-        right.y = 0;
+        forward.y = right.y = 0;
         forward.Normalize();
         right.Normalize();
 
@@ -61,9 +57,14 @@ public class UnderwaterMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
 
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y < 0 && !isGrounded)
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallSpeed - 1) * Time.deltaTime;
+                if (rb.velocity.y < -0.1f)
+                {
+                    Debug.Log("[Nado Automático] Entrando no modo de nado devido à queda.");
+                    ToggleSwimMode();
+                }
             }
         }
         else
@@ -71,55 +72,18 @@ public class UnderwaterMovement : MonoBehaviour
             rb.velocity = new Vector3(movement.x * swimSpeed, rb.velocity.y, movement.z * swimSpeed);
 
             if (Input.GetButton("Jump"))
-            {
                 rb.velocity = new Vector3(rb.velocity.x, riseSpeed, rb.velocity.z);
-            }
             else
-            {
                 rb.velocity = new Vector3(rb.velocity.x, -swimFallSpeed, rb.velocity.z);
-            }
 
-            float currentYPosition = transform.position.y;
-
-            if (currentYPosition > previousYPosition)
-            {
-                progressBar.ModifyDecreaseRate(swimOxygenReductionRate); 
-            }
-            else
-            {
-                progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
-            }
-
-            previousYPosition = currentYPosition;
+            UpdateOxygenAndYPosition();
         }
 
-        if (movement != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            animator.SetBool("IsMoving", true); // animacao para mexer
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false); // animacao para parar
-        }
+        HandleRotationAndAnimation(movement);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            if (isGrounded)
-            {
-                Jump();
-                animator.SetTrigger("Jump");
-            }
-        }
-
-        if (!isGrounded && Input.GetButton("Jump"))
-        {
-            float currentYPosition = transform.position.y;
-            if (currentYPosition - previousYPosition > minSwimHeight && !isSwimming)
-            {
-                ToggleSwimMode();
-            }
+            Jump();
         }
     }
 
@@ -128,20 +92,40 @@ public class UnderwaterMovement : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
         startYPosition = transform.position.y;
+        Debug.Log($"[Jump] StartY: {startYPosition}");
     }
 
     void ToggleSwimMode()
     {
         isSwimming = !isSwimming;
+        Debug.Log($"[ToggleSwimMode] Swim Mode Ativo: {isSwimming}");
 
-        if (!isSwimming)
+        rb.useGravity = !isSwimming;
+        progressBar.ModifyDecreaseRate(defaultOxygenReductionRate);
+    }
+
+    void UpdateOxygenAndYPosition()
+    {
+        float currentYPosition = transform.position.y;
+        if (currentYPosition > previousYPosition)
+            progressBar.ModifyDecreaseRate(swimOxygenReductionRate);
+        else
+            progressBar.ModifyDecreaseRate(defaultOxygenReductionRate);
+
+        previousYPosition = currentYPosition;
+    }
+
+    void HandleRotationAndAnimation(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
         {
-            rb.useGravity = true;
-            progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            animator.SetBool("IsMoving", true);
         }
         else
         {
-            rb.useGravity = false;
+            animator.SetBool("IsMoving", false);
         }
     }
 
@@ -150,11 +134,8 @@ public class UnderwaterMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
-            if (isSwimming)
-            {
-                ToggleSwimMode();
-                progressBar.ModifyDecreaseRate(defaultOxygenReductionRate); 
-            }
+            if (isSwimming) ToggleSwimMode();
+            Debug.Log("[Collision] Colidiu com Ground. Modo de nado desativado.");
         }
     }
 }
