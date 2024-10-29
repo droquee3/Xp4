@@ -6,8 +6,8 @@ using MilkShake;
 public class ZoomCamera : MonoBehaviour
 {
     public CameraOrbital cameraOrbital;
-    public Shaker cameraShaker; // Referência ao Shaker do MilkShake
-    public ShakePreset shakePreset; // Preset de tremor configurável no inspector
+    public Shaker cameraShaker; 
+    public ShakePreset shakePreset; 
 
     public float zoomOutDistance = 10f;
     public float zoomDuration = 3f;
@@ -35,7 +35,6 @@ public class ZoomCamera : MonoBehaviour
 
     private IEnumerator HandleZoom()
     {
-        // Inicia o tremor da câmera ao entrar no collider
         cameraShaker.Shake(shakePreset);
 
         yield return StartCoroutine(ZoomToDistance(zoomOutDistance));
