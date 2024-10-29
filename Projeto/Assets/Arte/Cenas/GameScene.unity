@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -828,7 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91272912}
   - component: {fileID: 91272911}
-  - component: {fileID: 91272913}
+  - component: {fileID: 91272914}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -872,7 +872,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &91272913
+--- !u!114 &91272914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -881,18 +881,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 91272909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9f2f3aa42663847b1fbd429a370b8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 718b4034981f92d449b4617da142a79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyePrefab: {fileID: 2125556940624310633, guid: bba37fb148368d4408763743139e195f,
-    type: 3}
-  player: {fileID: 2114654755}
-  spawnRadius: 5
-  moveSpeed: 0.5
-  maxNumberOfEyes: 1
-  spawnInterval: 1
-  progressBar: {fileID: 241550122}
-  reductionAmount: 0.863916
+  cameraOrbital: {fileID: 557805177}
+  cameraShaker: {fileID: 557805182}
+  shakePreset: {fileID: 11400000, guid: ab64587d19e161b41a8117ce6fddb894, type: 2}
+  zoomOutDistance: 10
+  zoomDuration: 3
+  smoothTime: 0.5
 --- !u!1001 &91630122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14177,6 +14174,7 @@ GameObject:
   - component: {fileID: 557805179}
   - component: {fileID: 557805178}
   - component: {fileID: 557805177}
+  - component: {fileID: 557805182}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -14410,6 +14408,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &557805182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557805176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1697a0132719bae458729c9e99c0c716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addToGlobalShakers: 0
 --- !u!1 &575581131
 GameObject:
   m_ObjectHideFlags: 0
@@ -22600,6 +22611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5580597681380517137, guid: 6c38096cca0461d45bd9c2488aca0528,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580597681380517137, guid: 6c38096cca0461d45bd9c2488aca0528,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -22738,7 +22754,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221056186}
-  m_LocalRotation: {x: -0, y: 0.038692724, z: -0, w: 0.9992512}
+  m_LocalRotation: {x: -0, y: -0.09096783, z: -0, w: 0.99585384}
   m_LocalPosition: {x: 0, y: 0, z: -2217.457}
   m_LocalScale: {x: 0.13938776, y: 0.11866348, z: 0.33209306}
   m_ConstrainProportionsScale: 0
@@ -22746,7 +22762,7 @@ RectTransform:
   - {fileID: 1266912632}
   - {fileID: 429345220}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -10.439, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 539.325, y: 292.37405}
@@ -22904,8 +22920,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2114654755}
   offset: {x: 3, y: 1, z: 0}
-  rotationSmoothness: 1
-  cameraTransform: {fileID: 557805181}
 --- !u!1 &1231586976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -256332530724150433, guid: d60ae19ec78ddac4780fd650480be138,
@@ -23261,6 +23275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraOrbital: {fileID: 557805177}
+  cameraShaker: {fileID: 0}
+  shakePreset: {fileID: 0}
   zoomOutDistance: 10
   zoomDuration: 3
   smoothTime: 2
@@ -26282,8 +26298,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2114654755}
   offset: {x: -3, y: 1, z: 0.3}
-  rotationSmoothness: 1
-  cameraTransform: {fileID: 557805181}
 --- !u!1001 &1568859000
 PrefabInstance:
   m_ObjectHideFlags: 0

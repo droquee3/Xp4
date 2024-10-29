@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MilkShake;
 
 public class ZoomCamera : MonoBehaviour
 {
     public CameraOrbital cameraOrbital;
-    public float zoomOutDistance = 10f;  
-    public float zoomDuration = 3f;      
-    public float smoothTime = 0.5f;      
+    public Shaker cameraShaker; // Referência ao Shaker do MilkShake
+    public ShakePreset shakePreset; // Preset de tremor configurável no inspector
+
+    public float zoomOutDistance = 10f;
+    public float zoomDuration = 3f;
+    public float smoothTime = 0.5f;
 
     private float originalDistance;
     private Coroutine zoomCoroutine;
@@ -31,11 +35,12 @@ public class ZoomCamera : MonoBehaviour
 
     private IEnumerator HandleZoom()
     {
-        yield return StartCoroutine(ZoomToDistance(zoomOutDistance));
+        // Inicia o tremor da câmera ao entrar no collider
+        cameraShaker.Shake(shakePreset);
 
+        yield return StartCoroutine(ZoomToDistance(zoomOutDistance));
         yield return new WaitForSeconds(zoomDuration);
 
-     
         yield return StartCoroutine(ZoomToDistance(originalDistance));
     }
 
@@ -49,6 +54,6 @@ public class ZoomCamera : MonoBehaviour
             yield return null;
         }
 
-        cameraOrbital.distance = targetDistance; 
+        cameraOrbital.distance = targetDistance;
     }
 }
