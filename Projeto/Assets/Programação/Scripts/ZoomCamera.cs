@@ -6,9 +6,6 @@ using MilkShake;
 public class ZoomCamera : MonoBehaviour
 {
     public CameraOrbital cameraOrbital;
-    public Shaker cameraShaker; 
-    public ShakePreset shakePreset; 
-
     public float zoomOutDistance = 10f;
     public float zoomDuration = 3f;
     public float smoothTime = 0.5f;
@@ -35,10 +32,10 @@ public class ZoomCamera : MonoBehaviour
 
     private IEnumerator HandleZoom()
     {
-        cameraShaker.Shake(shakePreset);
-
         yield return StartCoroutine(ZoomToDistance(zoomOutDistance));
+
         yield return new WaitForSeconds(zoomDuration);
+
 
         yield return StartCoroutine(ZoomToDistance(originalDistance));
     }

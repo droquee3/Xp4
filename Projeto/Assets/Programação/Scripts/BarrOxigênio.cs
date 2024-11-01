@@ -8,7 +8,6 @@ public class ProgressBar : MonoBehaviour
     public float resetDelay = 3f;
     public GameObject player;
     private Vector3 respawnPosition;
-
     private float currentHeight;
     private float elapsedTime = 0f;
     private float resetElapsedTime = 0f;
