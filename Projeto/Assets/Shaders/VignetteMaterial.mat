@@ -144,6 +144,8 @@ Material:
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
     - _BlendMode: 0
+    - _BlurWidth: 0.1
+    - _CircleRadius: 1
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -226,7 +228,7 @@ Material:
     - _Thickness: 1
     - _TransmissionEnable: 1
     - _TransmissionMask: 1
-    - _Transparency: 1
+    - _Transparency: 0
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
