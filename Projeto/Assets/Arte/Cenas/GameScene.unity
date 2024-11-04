@@ -25880,13 +25880,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660176230}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bcf9f2d0dee93e409f301404a8ab9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vignetteMaterial: {fileID: 2100000, guid: 8df4858a0b036544698a81bd345ca982, type: 2}
-  fadeSpeed: 5
+  fadeDuration: 0.5
+  maxCircleRadius: 0.5
+  minCircleRadius: 0.05
 --- !u!114 &1660176232
 MonoBehaviour:
   m_ObjectHideFlags: 0
