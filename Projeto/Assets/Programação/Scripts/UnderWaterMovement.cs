@@ -72,9 +72,15 @@ public class UnderwaterMovement : MonoBehaviour
             rb.velocity = new Vector3(movement.x * swimSpeed, rb.velocity.y, movement.z * swimSpeed);
 
             if (Input.GetButton("Jump"))
+            { 
                 rb.velocity = new Vector3(rb.velocity.x, riseSpeed, rb.velocity.z);
+                animator.SetBool("IsFalling", false);
+            }
             else
+            { 
                 rb.velocity = new Vector3(rb.velocity.x, -swimFallSpeed, rb.velocity.z);
+                animator.SetBool("IsFalling", true);
+            }
 
             UpdateOxygenAndYPosition();
         }
@@ -83,6 +89,7 @@ public class UnderwaterMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            animator.SetTrigger("Jump");
             Jump();
         }
     }
@@ -91,6 +98,7 @@ public class UnderwaterMovement : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
+        animator.SetBool("IsGrounded", false);
         startYPosition = transform.position.y;
         Debug.Log($"[Jump] StartY: {startYPosition}");
     }
@@ -134,6 +142,7 @@ public class UnderwaterMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            animator.SetBool("IsGrounded", true);
             if (isSwimming) ToggleSwimMode();
             Debug.Log("[Collision] Colidiu com Ground. Modo de nado desativado.");
         }
