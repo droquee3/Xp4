@@ -39,6 +39,11 @@ Library: C:\Users\Usuario\Documents\Xp4\Projeto\Temp\BurstOutput\Data\Plugins\x8
 --assembly-defines=Unity.InputSystem.ForUI;
 --assembly-defines=Unity.Mathematics;
 --assembly-defines=Unity.Postprocessing.Runtime;
+--assembly-defines=Unity.ProBuilder.Csg;
+--assembly-defines=Unity.ProBuilder;
+--assembly-defines=Unity.ProBuilder.KdTree;
+--assembly-defines=Unity.ProBuilder.Poly2Tri;
+--assembly-defines=Unity.ProBuilder.Stl;
 --assembly-defines=Unity.Rendering.LightTransport.Runtime;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime.Shared;
@@ -134,6 +139,11 @@ Library: C:\Users\Usuario\Documents\Xp4\Projeto\Temp\BurstOutput\Data\Plugins\x8
 --assembly-defines=Unity.InputSystem.ForUI;
 --assembly-defines=Unity.Mathematics;
 --assembly-defines=Unity.Postprocessing.Runtime;
+--assembly-defines=Unity.ProBuilder.Csg;
+--assembly-defines=Unity.ProBuilder;
+--assembly-defines=Unity.ProBuilder.KdTree;
+--assembly-defines=Unity.ProBuilder.Poly2Tri;
+--assembly-defines=Unity.ProBuilder.Stl;
 --assembly-defines=Unity.Rendering.LightTransport.Runtime;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime.Shared;
