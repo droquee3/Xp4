@@ -1,8 +1,9 @@
-Shader "Custom/VignetteShader"
+Shader "Custom/VignetteWithBlurredCircle"
 {
     Properties
     {
-        _Transparency ("Transparency", Range(0, 1)) = 1.0 // Controle da transparência
+        _CircleRadius ("Circle Radius", Range(0, 1)) = 1.0     // Tamanho do círculo transparente
+        _BlurWidth ("Blur Width", Range(0, 0.5)) = 0.1         // Largura da transição suave
     }
 
     SubShader
@@ -12,7 +13,7 @@ Shader "Custom/VignetteShader"
 
         Pass
         {
-            Blend SrcAlpha OneMinusSrcAlpha // Define a transparência
+            Blend SrcAlpha OneMinusSrcAlpha                      // Define a transparência
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -30,7 +31,8 @@ Shader "Custom/VignetteShader"
                 float4 pos : SV_POSITION;
             };
 
-            float _Transparency;
+            float _CircleRadius;
+            float _BlurWidth;
 
             v2f vert (appdata v)
             {
@@ -42,8 +44,16 @@ Shader "Custom/VignetteShader"
 
             half4 frag (v2f i) : SV_Target
             {
-                // Cor escura com transparência controlada
-                return half4(0, 0, 0, 1 - _Transparency); // Preto com transparência inversa
+                // Calcula a distância do ponto atual ao centro da tela
+                float2 center = float2(0.5, 0.5);
+                float dist = distance(i.uv, center);
+
+                // Define a transição suave entre o círculo transparente e as bordas pretas
+                float edgeStart = _CircleRadius;
+                float edgeEnd = _CircleRadius + _BlurWidth;
+                float alpha = smoothstep(edgeStart, edgeEnd, dist);
+
+                return half4(0, 0, 0, alpha); // Preto com transição suave
             }
             ENDCG
         }
