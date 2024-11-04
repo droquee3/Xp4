@@ -52,7 +52,7 @@ public class CameraCollider1 : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(target.position, desiredPosition, out hit, collisionLayers))
         {
-            desiredPosition = hit.point + hit.normal * 0.2f; // Ajuste para evitar que a câmera entre no objeto
+            desiredPosition = hit.point + hit.normal * 0.2f; 
         }
 
         transform.rotation = rotation;
