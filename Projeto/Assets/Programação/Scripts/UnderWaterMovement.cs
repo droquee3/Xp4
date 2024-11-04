@@ -62,7 +62,7 @@ public class UnderwaterMovement : MonoBehaviour
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallSpeed - 1) * Time.deltaTime;
                 if (rb.velocity.y < -0.1f)
                 {
-                    Debug.Log("[Nado Automático] Entrando no modo de nado devido à queda.");
+                    //Debug.Log("[Nado Automático] Entrando no modo de nado devido à queda.");
                     ToggleSwimMode();
                 }
             }
@@ -100,13 +100,13 @@ public class UnderwaterMovement : MonoBehaviour
         isGrounded = false;
         animator.SetBool("IsGrounded", false);
         startYPosition = transform.position.y;
-        Debug.Log($"[Jump] StartY: {startYPosition}");
+        //Debug.Log($"[Jump] StartY: {startYPosition}");
     }
 
     void ToggleSwimMode()
     {
         isSwimming = !isSwimming;
-        Debug.Log($"[ToggleSwimMode] Swim Mode Ativo: {isSwimming}");
+        //Debug.Log($"[ToggleSwimMode] Swim Mode Ativo: {isSwimming}");
 
         rb.useGravity = !isSwimming;
         progressBar.ModifyDecreaseRate(defaultOxygenReductionRate);
@@ -144,7 +144,7 @@ public class UnderwaterMovement : MonoBehaviour
             isGrounded = true;
             animator.SetBool("IsGrounded", true);
             if (isSwimming) ToggleSwimMode();
-            Debug.Log("[Collision] Colidiu com Ground. Modo de nado desativado.");
+            //Debug.Log("[Collision] Colidiu com Ground. Modo de nado desativado.");
         }
     }
 }
