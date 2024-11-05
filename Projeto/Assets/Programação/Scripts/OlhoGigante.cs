@@ -11,7 +11,7 @@ public class OlhoGigante : MonoBehaviour
     public float offsetZ = 10f;
     public ProgressBar oxygenBar;
     public float oxygenIncreaseRate = 0.05f;
-
+    public Vector3 eyeRotationOffset; 
     private bool eyeActivated = false;
     private float deactivateTimer = 0f;
     private Vector3 initialEyePosition;
@@ -75,7 +75,7 @@ public class OlhoGigante : MonoBehaviour
     {
         Vector3 directionToPlayer = player.position - eye.transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-        targetRotation *= Quaternion.Euler(90, 0, 0);
+        targetRotation *= Quaternion.Euler(eyeRotationOffset); 
         eye.transform.rotation = targetRotation;
     }
 }

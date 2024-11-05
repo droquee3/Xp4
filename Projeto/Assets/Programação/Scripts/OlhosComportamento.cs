@@ -10,6 +10,8 @@ public class OlhosComportamento : MonoBehaviour
     private ProgressBar progressBar;
     private ParticleSystem explosionEffect;
 
+    public Vector3 rotationOffset; 
+
     public void Initialize(Transform player, float moveSpeed, float reductionAmount, ProgressBar progressBar)
     {
         this.player = player;
@@ -30,10 +32,11 @@ public class OlhosComportamento : MonoBehaviour
         {
             Vector3 targetPosition = player.position;
             targetPosition.y += 1.5f;
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            Vector3 directionToPlayer = (targetPosition - transform.position).normalized;
 
-            Quaternion targetRotation = Quaternion.LookRotation(-direction);
+            transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
+
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(rotationOffset);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
         }
     }
@@ -48,11 +51,10 @@ public class OlhosComportamento : MonoBehaviour
                 explosionEffect.gameObject.SetActive(true);
                 explosionEffect.Play();
 
-              
                 Destroy(explosionEffect.gameObject, explosionEffect.main.duration);
             }
 
-            if (progressBar != null) 
+            if (progressBar != null)
             {
                 progressBar.ReduceOnCollision(reductionAmount);
             }
