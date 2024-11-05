@@ -35595,7 +35595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8093bbdb7ff4e8d468f58f9e251fb9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyePrefab: {fileID: 0}
+  eyePrefab: {fileID: 8170676541854694025, guid: ddaacb7f6642a2e49bc00af0659241c8,
+    type: 3}
   player: {fileID: 2114654755}
   spawnRadius: 10
   moveSpeed: 0.5
@@ -35614,7 +35615,7 @@ Transform:
   m_GameObject: {fileID: 1994310828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 142.13, y: 39.73, z: -2185.42}
+  m_LocalPosition: {x: 98.1, y: 39.73, z: -2207.5}
   m_LocalScale: {x: 30.543001, y: 1, z: 46.136253}
   m_ConstrainProportionsScale: 0
   m_Children: []

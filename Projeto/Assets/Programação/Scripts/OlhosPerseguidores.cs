@@ -21,7 +21,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !progressBar.isOxygenDepleted) 
+        if (other.CompareTag("Player") && !progressBar.isOxygenDepleted)
         {
             playerInsideTrigger = true;
             if (!isSpawning && spawnedEyes.Count < maxNumberOfEyes)
@@ -33,10 +33,8 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Saiu da zona");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Entrou na zona");
             playerInsideTrigger = false;
             StopAllEyes();
             progressBar.ModifyDecreaseRate(normalDecreaseRate);
@@ -45,14 +43,14 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void StopAllEyes()
     {
-        foreach (var eye in spawnedEyes)
+        for (int i = spawnedEyes.Count - 1; i >= 0; i--)
         {
-            if (eye != null)
+            if (spawnedEyes[i] != null)
             {
-                Destroy(eye);
+                Destroy(spawnedEyes[i]);
             }
+            spawnedEyes.RemoveAt(i);
         }
-        spawnedEyes.Clear();
         isSpawning = false;
     }
 
@@ -60,7 +58,7 @@ public class OlhosPerseguidores : MonoBehaviour
     {
         isSpawning = true;
 
-        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted) 
+        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted)
         {
             Vector3 randomPosition;
             bool validPosition = false;
@@ -85,50 +83,14 @@ public class OlhosPerseguidores : MonoBehaviour
 
             GameObject eye = Instantiate(eyePrefab, randomPosition, Quaternion.identity);
             spawnedEyes.Add(eye);
-            StartCoroutine(MoveEyeTowardsPlayer(eye));
+
+            var eyeBehavior = eye.AddComponent<OlhoComportamento2>();
+            eyeBehavior.Initialize(player, moveSpeed, reductionOffset, normalDecreaseRate, progressBar, proximityThreshold);
 
             yield return new WaitForSeconds(spawnInterval);
         }
 
         isSpawning = false;
-    }
-
-    IEnumerator MoveEyeTowardsPlayer(GameObject eye)
-    {
-        while (eye != null && playerInsideTrigger && !progressBar.isOxygenDepleted) 
-        {
-            Vector3 targetPosition = player.position;
-            targetPosition.y = player.position.y + 1 / 2f;
-
-            Vector3 direction = (targetPosition - eye.transform.position).normalized;
-            eye.transform.position += direction * moveSpeed * Time.deltaTime;
-
-            Quaternion targetRotation = Quaternion.LookRotation(-direction);
-            eye.transform.rotation = Quaternion.Slerp(eye.transform.rotation, targetRotation, 0.1f);
-
-            float distanceToPlayer = Vector3.Distance(eye.transform.position, player.position);
-            if (distanceToPlayer < proximityThreshold)
-            {
-                progressBar.ModifyDecreaseRateForEyes(reductionOffset);
-            }
-            else
-            {
-                progressBar.ModifyDecreaseRate(normalDecreaseRate);
-            }
-
-            if (distanceToPlayer < 0.5f)
-            {
-                Destroy(eye);
-                spawnedEyes.Remove(eye);
-            }
-
-            yield return null;
-        }
-
-        if (eye != null)
-        {
-            Destroy(eye);
-        }
     }
 
     void Update()
