@@ -23022,7 +23022,32 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2114654756}
+    - targetCorrespondingSourceObject: {fileID: 29785008215346729, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1356275670}
   m_SourcePrefab: {fileID: 100100000, guid: cf130abcde953e745899ff7ed66e57fd, type: 3}
+--- !u!1 &1356275669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 29785008215346729, guid: cf130abcde953e745899ff7ed66e57fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1356275668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356275670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356275669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27280590543aedc4a9cad463a8b71332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygenMaterial: {fileID: 2100000, guid: a651890b370bf224393f116403378f31, type: 2}
+  maxOxygen: 1.1
+  reductionRate: 0.1
 --- !u!1 &1366540142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2524080565271031660, guid: d60ae19ec78ddac4780fd650480be138,
