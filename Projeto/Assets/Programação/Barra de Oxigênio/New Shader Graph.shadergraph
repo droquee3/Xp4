@@ -854,7 +854,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "SegmentAmount",
     "m_DefaultReferenceName": "_SegmentAmount",
-    "m_OverrideReferenceName": "_Amount",
+    "m_OverrideReferenceName": "_segmentAmount",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1201,7 +1201,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "OffSet",
     "m_DefaultReferenceName": "_OffSet",
-    "m_OverrideReferenceName": "_offSet",
+    "m_OverrideReferenceName": "_offset",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1213,8 +1213,8 @@
     "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
-        "x": 0.5,
-        "y": -0.5
+        "x": -0.5,
+        "y": 0.5
     }
 }
 
@@ -1972,10 +1972,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1077.0,
-            "y": 231.00003051757813,
-            "width": 207.99993896484376,
-            "height": 325.9999694824219
+            "x": -945.0001220703125,
+            "y": 231.00001525878907,
+            "width": 208.00006103515626,
+            "height": 326.0
         }
     },
     "m_Slots": [

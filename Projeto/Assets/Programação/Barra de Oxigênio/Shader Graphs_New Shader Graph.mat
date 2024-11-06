@@ -63,6 +63,7 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _Amount: 19
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -100,7 +101,9 @@ Material:
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _offSet: 0.116
+    - _offSet: 0.5
+    - _offset: -0.5
+    - _segmentAmount: 22.54
     m_Colors:
     - _Color: {r: 0, g: 0.9622641, b: 0.8271146, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
