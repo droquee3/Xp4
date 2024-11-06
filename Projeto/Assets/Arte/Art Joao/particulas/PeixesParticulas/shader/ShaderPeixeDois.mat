@@ -37,7 +37,7 @@ Material:
     - _FrequencyZ: 3.1
     - _HeadLimit: -1.03
     - _SpeedX: 7
-    - _SpeedY: 10
+    - _SpeedY: 5.9
     - _SpeedZ: 0.1
     m_Colors: []
   m_BuildTextureStacks: []
