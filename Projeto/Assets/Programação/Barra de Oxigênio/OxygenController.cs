@@ -4,39 +4,26 @@ using UnityEngine;
 
 public class OxygenController : MonoBehaviour
 {
-    public Material oxygenMaterial;
-    public float maxOxygen = 1.0f;
-    public float reductionRate = 0.1f;
-    public float reductionInterval = 1.0f;
+    public Material oxygenMaterial; 
+    public float maxOxygen = 1.0f;  
+    public float reductionRate = 0.1f; 
 
-    private float currentOxygen;
-    private float reductionTimer;
+    private float currentOxygen; 
 
     void Start()
     {
-        currentOxygen = maxOxygen;
-        reductionTimer = reductionInterval;
+        currentOxygen = maxOxygen; 
     }
 
     void Update()
     {
-        reductionTimer -= Time.deltaTime;
+        currentOxygen -= reductionRate * Time.deltaTime;
+        currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);  
 
-        if (reductionTimer <= 0)
+        if (oxygenMaterial != null)
         {
-            currentOxygen -= reductionRate;
-            currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
-            reductionTimer = reductionInterval;
-
-            if (oxygenMaterial != null)
-            {
-                oxygenMaterial.SetFloat("_FillAmount", currentOxygen / maxOxygen);
-                Debug.Log("Current Oxygen Level: " + currentOxygen / maxOxygen);
-            }
-            else
-            {
-                Debug.LogWarning("Oxygen Material not assigned.");
-            }
+            oxygenMaterial.SetFloat("Reduction", currentOxygen / maxOxygen);
         }
+       
     }
 }

@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class BarraOxigenio2 : MonoBehaviour
 {
-    public Material oxygenMaterial;
+    public Material oxygenMaterial; 
     public Color fullOxygenColor = Color.blue;
-    public Color emptyOxygenColor = Color.red;
-    public float maxHeight = 1f;
-    public float decreaseRate = 0.1f;
-    public GameObject player;
+    public Color emptyOxygenColor = Color.red; 
+    public float decreaseRate = 0.1f; 
 
-    private float currentHeight;
+    private float currentOxygen;
+    private float maxOxygen = 1f; 
     private bool isOxygenDepleted = false;
 
     void Start()
     {
-        currentHeight = maxHeight;
+        currentOxygen = maxOxygen;
         UpdateOxygenColor();
-        UpdateOxygenFill();
     }
 
     void Update()
     {
         if (!isOxygenDepleted)
         {
-            currentHeight -= decreaseRate * Time.deltaTime;
-            currentHeight = Mathf.Clamp(currentHeight, 0, maxHeight);
+           
+            currentOxygen -= decreaseRate * Time.deltaTime;
+            currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
 
             UpdateOxygenColor();
-            UpdateOxygenFill();
 
-            if (currentHeight <= 0)
+            if (currentOxygen <= 0)
             {
                 isOxygenDepleted = true;
             }
@@ -40,13 +38,13 @@ public class BarraOxigenio2 : MonoBehaviour
 
     void UpdateOxygenColor()
     {
-        float oxygenLevel = currentHeight / maxHeight;
+        
+        float oxygenLevel = currentOxygen / maxOxygen;
+
+       
         Color currentColor = Color.Lerp(emptyOxygenColor, fullOxygenColor, oxygenLevel);
+
+     
         oxygenMaterial.SetColor("_BaseColor", currentColor);
-    }
-    void UpdateOxygenFill()
-    {
-        float fillAmount = currentHeight / maxHeight;
-        oxygenMaterial.SetFloat("_FillAmount", fillAmount); // "_FillAmount" deve ser uma propriedade exposta no shader
     }
 }
