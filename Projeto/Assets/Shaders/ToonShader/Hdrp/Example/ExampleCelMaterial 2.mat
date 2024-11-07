@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2560083084367379809
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ExampleCelMaterial 2
+  m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
+    type: 3}
+  m_Parent: {fileID: 2100000, guid: 6701b1be9c9d15d42b91e27ab3b92b0b, type: 2}
+  m_ModifiedSerializedProperties: 8
+  m_ValidKeywords:
+  - _DISABLE_DECALS
+  m_InvalidKeywords:
+  - _NORMALMAP_TANGENT_SPACE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2750
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentBackface
+  - MOTIONVECTORS
+  - RayTracingPrepass
+  - TransparentDepthPostpass
+  - TransparentDepthPrepass
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - HardEdgeAlpha: 0
+    - HardEdgeSize: 0.32
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DoubleSidedEnable: 0
+    - _DstBlend: 0
+    - _DstBlend2: 0
+    - _LightScalar: 1
+    - _PerPixelSorting: 0
+    - _RampLevels: 4.04
+    - _ReceivesSSRTransparent: 1
+    - _StencilRefDepth: 8
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _SurfaceType: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentZWrite: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestTransparent: 8
+    - _ZWrite: 1
+    m_Colors:
+    - SoftEdgeColor: {r: 1869015.4, g: 1675060.9, b: 1676078.1, a: 0}
+    - _Color: {r: 0.97735846, g: 0.94232106, b: 0.94232106, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissColor: {r: 1, g: 0, b: 0, a: 0}
+    - _HighColor: {r: 2053.2595, g: 0, b: 11.267142, a: 0}
+    - _LowColor: {r: 1609.2535, g: 0, b: 75.8287, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
