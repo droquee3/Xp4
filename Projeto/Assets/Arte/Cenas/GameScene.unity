@@ -25827,6 +25827,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1763036116675622725, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d0924e7cdca2554c88042122adc66e6, type: 2}
     - target: {fileID: 1806893586142026557, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_TagString
@@ -25847,6 +25852,16 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 986ca80dbd4a5ca4aa4cab6bc21938ca, type: 2}
+    - target: {fileID: 2121714867218974307, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d0924e7cdca2554c88042122adc66e6, type: 2}
+    - target: {fileID: 2121714867218974307, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e9aca085dac18845a5b6a73c3b1688d, type: 2}
     - target: {fileID: 3571820641431997698, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_Radius
@@ -26067,6 +26082,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8702329645613950717, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e9aca085dac18845a5b6a73c3b1688d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
