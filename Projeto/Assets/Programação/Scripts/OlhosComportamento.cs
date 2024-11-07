@@ -7,17 +7,17 @@ public class OlhosComportamento : MonoBehaviour
     private Transform player;
     private float moveSpeed;
     private float reductionAmount;
-    private ProgressBar progressBar;
+    private NovaBarraOxigênio oxygenBar; 
     private ParticleSystem explosionEffect;
 
-    public Vector3 rotationOffset; 
+    public Vector3 rotationOffset;
 
-    public void Initialize(Transform player, float moveSpeed, float reductionAmount, ProgressBar progressBar)
+    public void Initialize(Transform player, float moveSpeed, float reductionAmount, NovaBarraOxigênio oxygenBar) 
     {
         this.player = player;
         this.moveSpeed = moveSpeed;
         this.reductionAmount = reductionAmount;
-        this.progressBar = progressBar;
+        this.oxygenBar = oxygenBar; 
 
         explosionEffect = GetComponentInChildren<ParticleSystem>(true);
         if (explosionEffect != null)
@@ -28,7 +28,7 @@ public class OlhosComportamento : MonoBehaviour
 
     void Update()
     {
-        if (player != null && !progressBar.isOxygenDepleted)
+        if (player != null && !oxygenBar.isOxygenDepleted) 
         {
             Vector3 targetPosition = player.position;
             targetPosition.y += 1.5f;
@@ -54,9 +54,9 @@ public class OlhosComportamento : MonoBehaviour
                 Destroy(explosionEffect.gameObject, explosionEffect.main.duration);
             }
 
-            if (progressBar != null)
+            if (oxygenBar != null) 
             {
-                progressBar.ReduceOnCollision(reductionAmount);
+                oxygenBar.ReduceOnCollision(-reductionAmount);
             }
 
             Destroy(gameObject);

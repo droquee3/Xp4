@@ -8,19 +8,20 @@ public class OlhoComportamento2 : MonoBehaviour
     private float moveSpeed;
     private float reductionOffset;
     private float normalDecreaseRate;
-    private ProgressBar progressBar;
+    private NovaBarraOxigênio oxygenBar; 
     private ParticleSystem explosionEffect;
 
     public float proximityThreshold = 5f;
     public Vector3 rotationOffset;
 
-    public void Initialize(Transform player, float moveSpeed, float reductionOffset, float normalDecreaseRate, ProgressBar progressBar, float proximityThreshold)
+    
+    public void Initialize(Transform player, float moveSpeed, float reductionOffset, float normalDecreaseRate, NovaBarraOxigênio oxygenBar, float proximityThreshold)
     {
         this.player = player;
         this.moveSpeed = moveSpeed;
-        this.reductionOffset = reductionOffset;
-        this.normalDecreaseRate = normalDecreaseRate;
-        this.progressBar = progressBar;
+        this.reductionOffset = Mathf.Abs(reductionOffset); 
+        this.normalDecreaseRate = -Mathf.Abs(normalDecreaseRate);
+        this.oxygenBar = oxygenBar; 
         this.proximityThreshold = proximityThreshold;
 
         explosionEffect = GetComponentInChildren<ParticleSystem>(true);
@@ -32,14 +33,12 @@ public class OlhoComportamento2 : MonoBehaviour
 
     void Update()
     {
-        if (player != null && !progressBar.isOxygenDepleted)
+        if (player != null && !oxygenBar.isOxygenDepleted)
         {
             Vector3 targetPosition = player.position;
             targetPosition.y += 1.5f;
             Vector3 directionToPlayer = (targetPosition - transform.position).normalized;
-
             transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
-
             Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer) * Quaternion.Euler(rotationOffset);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
 
@@ -47,11 +46,11 @@ public class OlhoComportamento2 : MonoBehaviour
 
             if (distanceToPlayer < proximityThreshold)
             {
-                progressBar.ModifyDecreaseRateForEyes(reductionOffset);
+                oxygenBar.ModifyDecreaseRateForEyes(reductionOffset);
             }
             else
             {
-                progressBar.ModifyDecreaseRate(normalDecreaseRate);
+                oxygenBar.ModifyDecreaseRate(normalDecreaseRate);
             }
         }
     }
@@ -67,11 +66,6 @@ public class OlhoComportamento2 : MonoBehaviour
                 explosionEffect.Play();
 
                 Destroy(explosionEffect.gameObject, explosionEffect.main.duration);
-            }
-
-            if (progressBar != null)
-            {
-                progressBar.ReduceOnCollision(reductionOffset);
             }
 
             Destroy(gameObject);

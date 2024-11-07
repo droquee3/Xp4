@@ -10,7 +10,7 @@ public class OlhosPerseguidores : MonoBehaviour
     public float moveSpeed = 2f;
     public int maxNumberOfEyes = 5;
     public float spawnInterval = 1f;
-    public ProgressBar progressBar;
+    public NovaBarraOxigênio oxygenBar; 
     public float proximityThreshold = 5f;
     public float reductionOffset = 0.2f;
     public float normalDecreaseRate = 0.01f;
@@ -21,7 +21,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !progressBar.isOxygenDepleted)
+        if (other.CompareTag("Player") && !oxygenBar.isOxygenDepleted)
         {
             playerInsideTrigger = true;
             if (!isSpawning && spawnedEyes.Count < maxNumberOfEyes)
@@ -37,7 +37,7 @@ public class OlhosPerseguidores : MonoBehaviour
         {
             playerInsideTrigger = false;
             StopAllEyes();
-            progressBar.ModifyDecreaseRate(normalDecreaseRate);
+            oxygenBar.ModifyDecreaseRate(normalDecreaseRate);
         }
     }
 
@@ -58,7 +58,7 @@ public class OlhosPerseguidores : MonoBehaviour
     {
         isSpawning = true;
 
-        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted)
+        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !oxygenBar.isOxygenDepleted)
         {
             Vector3 randomPosition;
             bool validPosition = false;
@@ -85,7 +85,7 @@ public class OlhosPerseguidores : MonoBehaviour
             spawnedEyes.Add(eye);
 
             var eyeBehavior = eye.AddComponent<OlhoComportamento2>();
-            eyeBehavior.Initialize(player, moveSpeed, reductionOffset, normalDecreaseRate, progressBar, proximityThreshold);
+            eyeBehavior.Initialize(player, moveSpeed, reductionOffset, normalDecreaseRate, oxygenBar, proximityThreshold);
 
             yield return new WaitForSeconds(spawnInterval);
         }
@@ -95,7 +95,7 @@ public class OlhosPerseguidores : MonoBehaviour
 
     void Update()
     {
-        if (progressBar.isOxygenDepleted)
+        if (oxygenBar.isOxygenDepleted)
         {
             StopAllEyes();
         }

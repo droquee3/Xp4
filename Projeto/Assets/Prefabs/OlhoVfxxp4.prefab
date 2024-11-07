@@ -4843,8 +4843,8 @@ GameObject:
   - component: {fileID: 8804470934823886899}
   - component: {fileID: 5584490199207047062}
   - component: {fileID: 7666515757478583132}
-  - component: {fileID: -6432254999515862955}
   - component: {fileID: -5938819195684231596}
+  - component: {fileID: -2466710947508564980}
   m_Layer: 0
   m_Name: OlhoVfxxp4
   m_TagString: Untagged
@@ -4922,18 +4922,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6432254999515862955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8170676541854694025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8864c322c00649b4cba390d026ac8026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &-5938819195684231596
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4955,3 +4943,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.50049996
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2466710947508564980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170676541854694025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8864c322c00649b4cba390d026ac8026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 0}

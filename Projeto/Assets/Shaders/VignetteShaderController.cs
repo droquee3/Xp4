@@ -1,41 +1,66 @@
+using System;
 using UnityEngine;
 
 public class VignetteShaderController : MonoBehaviour
 {
     public Material vignetteMaterial;      // Referência ao material com o shader de vinheta
     public float changeSpeed = 1.5f;       // Velocidade de alteração do raio do círculo
-    private float minCircleRadius = 0f; // Raio mínimo do círculo
-    private float maxCircleRadius = 1f;    // Raio máximo do círculo
-    private float targetRadius;             // Raio de destino do círculo
-    private float targetBlurWidth = 0.1f;  // Largura do desfoque
-    private bool isDead = false;            // Indica se o jogador está morto
+    public float animationDelay = 2f;      // Tempo até iniciar a animação da vinheta
 
-    private ProgressBar progressBar;        // Referência ao script ProgressBar
+    private float minCircleRadius = 0f;    // Raio mínimo do círculo
+    private float maxCircleRadius = 1f;    // Raio máximo do círculo
+    private float targetRadius;            // Raio de destino do círculo
+    private float targetBlurWidth = 0.1f;  // Largura do desfoque
+    private bool isDead = false;           // Indica se o jogador está morto
+
+    private NovaBarraOxigênio barraOxigenio;  
+    private float delayTimer;              // Temporizador para o atraso da animação
 
     void Start()
     {
-        // Obter a referência ao script ProgressBar
-        progressBar = FindObjectOfType<ProgressBar>();
+        // Referência da NovaBarraOxigênio
+        barraOxigenio = FindFirstObjectByType<NovaBarraOxigênio>();
 
-        if (progressBar == null)
+        if (barraOxigenio == null)
         {
-            Debug.LogError("ProgressBar script not found in the scene.");
+            Debug.LogError("NovaBarraOxigênio script not found in the scene.");
         }
 
         // Inicializa o raio do círculo para o máximo (estado de vida)
         vignetteMaterial.SetFloat("_CircleRadius", maxCircleRadius);
         vignetteMaterial.SetFloat("_BlurWidth", targetBlurWidth);
+
+        // Inicializa o temporizador de atraso
+        delayTimer = animationDelay;
+    }
+
+    private T FindFirstObjectOfType<T>()
+    {
+        throw new NotImplementedException();
     }
 
     void Update()
     {
-        if (progressBar != null)
+        if (barraOxigenio != null)
         {
-            // Verifica se o jogador está morto
-            isDead = progressBar.isOxygenDepleted;
+            // Verifica se o oxigênio está esgotado
+            isDead = barraOxigenio.isOxygenDepleted;
 
-            // Define o raio de destino dependendo do estado do jogador
-            targetRadius = isDead ? minCircleRadius : maxCircleRadius;
+            if (isDead)
+            {
+                // Reduz o temporizador de atraso
+                delayTimer -= Time.deltaTime;
+                if (delayTimer > 0) return; // Se ainda estiver no atraso, não continua
+
+                // Define o raio de destino para a vinheta quando o jogador está morto
+                targetRadius = minCircleRadius;
+            }
+            else
+            {
+                // Reinicia o temporizador e define o raio de destino para o estado de vida
+                delayTimer = animationDelay;
+                targetRadius = maxCircleRadius;
+            }
 
             // Obtém o raio atual do círculo
             float currentRadius = vignetteMaterial.GetFloat("_CircleRadius");

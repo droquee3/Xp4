@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 5584490199207047062}
   - component: {fileID: 7666515757478583132}
   - component: {fileID: -5938819195684231596}
-  - component: {fileID: 3100858759997079764}
+  - component: {fileID: 6158261524580678190}
   m_Layer: 0
   m_Name: OlhoVfx2
   m_TagString: Untagged
@@ -4943,7 +4943,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.50049996
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3100858759997079764
+--- !u!114 &6158261524580678190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4955,3 +4955,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8b302f46c2e3c4893f289506b2ab64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  proximityThreshold: 5
+  rotationOffset: {x: 0, y: 0, z: 0}

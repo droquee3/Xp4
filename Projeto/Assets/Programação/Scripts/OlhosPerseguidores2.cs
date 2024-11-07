@@ -10,7 +10,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
     public float moveSpeed = 2f;
     public int maxNumberOfEyes = 5;
     public float spawnInterval = 1f;
-    public ProgressBar progressBar;
+    public NovaBarraOxigênio oxygenBar; 
     public float reductionAmount = 1.7f;
 
     private bool isSpawning = false;
@@ -19,7 +19,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !progressBar.isOxygenDepleted)
+        if (other.CompareTag("Player") && !oxygenBar.isOxygenDepleted)
         {
             playerInsideTrigger = true;
             if (!isSpawning && spawnedEyes.Count < maxNumberOfEyes)
@@ -55,7 +55,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
     {
         isSpawning = true;
 
-        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !progressBar.isOxygenDepleted)
+        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !oxygenBar.isOxygenDepleted)
         {
             Vector3 randomPosition = player.position + (Random.insideUnitSphere * spawnRadius);
             randomPosition.y = player.position.y + Random.Range(1f, 2f);
@@ -64,7 +64,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
             spawnedEyes.Add(eye);
 
             OlhosComportamento eyeBehavior = eye.AddComponent<OlhosComportamento>();
-            eyeBehavior.Initialize(player, moveSpeed, reductionAmount, progressBar);
+            eyeBehavior.Initialize(player, moveSpeed, reductionAmount, oxygenBar); 
 
             yield return new WaitForSeconds(spawnInterval);
         }
@@ -74,7 +74,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
 
     void Update()
     {
-        if (progressBar.isOxygenDepleted)
+        if (oxygenBar.isOxygenDepleted)
         {
             StopAllEyes();
         }
