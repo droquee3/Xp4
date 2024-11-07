@@ -386,7 +386,7 @@ MonoBehaviour:
   activeTime: 100
   offsetY: 10
   offsetZ: 350
-  oxygenBar: {fileID: 0}
+  oxygenBar: {fileID: 1477798430}
   oxygenIncreaseRate: 0.05
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
 --- !u!135 &41115703
@@ -989,7 +989,7 @@ MonoBehaviour:
   moveSpeed: 1
   maxNumberOfEyes: 2
   spawnInterval: 4
-  progressBar: {fileID: 0}
+  progressBar: {fileID: 1477798430}
   reductionAmount: 0.6
 --- !u!135 &91272916
 SphereCollider:
@@ -21819,7 +21819,11 @@ PrefabInstance:
     - {fileID: 3817112338401263752, guid: 6c38096cca0461d45bd9c2488aca0528, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5580597681380517137, guid: 6c38096cca0461d45bd9c2488aca0528,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1477798430}
   m_SourcePrefab: {fileID: 100100000, guid: 6c38096cca0461d45bd9c2488aca0528, type: 3}
 --- !u!1 &1198535401 stripped
 GameObject:
@@ -22870,6 +22874,56 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.434
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.1269684
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.4087311
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.27987033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6142522
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.61425215
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 328.276
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 84.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052454996322848835, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 84.012
+      objectReference: {fileID: 0}
     - target: {fileID: 5180806456022357040, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_Name
@@ -22999,7 +23053,7 @@ PrefabInstance:
         type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1477798430}
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: cameraTransform
@@ -23644,6 +23698,30 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2865640500139081653, guid: d60ae19ec78ddac4780fd650480be138, type: 3}
+--- !u!1 &1477798425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5580597681380517137, guid: 6c38096cca0461d45bd9c2488aca0528,
+    type: 3}
+  m_PrefabInstance: {fileID: 1196778252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1477798430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477798425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5005f3cd7bcdf4694d15f634b44885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHeight: 1
+  decreaseRate: 0
+  delayBeforeStart: 2
+  resetDelay: 3
+  player: {fileID: 0}
+  isOxygenDepleted: 0
 --- !u!1001 &1530129741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36411,7 +36489,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   maxNumberOfEyes: 5
   spawnInterval: 3
-  progressBar: {fileID: 0}
+  progressBar: {fileID: 1477798430}
   proximityThreshold: 5
   reductionOffset: 0.1
   normalDecreaseRate: 0.01

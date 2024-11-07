@@ -13,20 +13,19 @@ public class NovaBarraOxigênio : MonoBehaviour
 
     void Start()
     {
-        currentOffset = maxOffset; 
+        currentOffset = minOffset; 
         UpdateMaterial(); 
     }
 
     void Update()
     {
-        if (currentOffset > minOffset)
+        if (currentOffset < maxOffset)
         {
-            currentOffset -= reductionRate * Time.deltaTime;
+            currentOffset += reductionRate * Time.deltaTime;
             currentOffset = Mathf.Clamp(currentOffset, minOffset, maxOffset);
             UpdateMaterial();
         }
     }
-
     void UpdateMaterial()
     {
         if (oxygenMaterial != null)
