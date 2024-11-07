@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-202453373619927659
+--- !u!114 &-2560083084367379809
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,11 +23,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PersonaegmDetalhaes
+  m_Name: areia teste
   m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: 283e3fc0bda22e546a27c9c901528c29, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_Parent: {fileID: 2100000, guid: d738f7cdb962f4743b7a580d08b46e74, type: 2}
+  m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
@@ -36,31 +36,33 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
+  - TransparentBackface
+  - MOTIONVECTORS
   - TransparentDepthPrepass
   - TransparentDepthPostpass
-  - TransparentBackface
   - RayTracingPrepass
-  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - HardEdgeSize: 1
-    - SoftEdgeAlpha: 1
-    - SoftEdgeFalloff: 1
-    - _RampLevels: 2
+    - HardEdgeAlpha: 1
+    - HardEdgeFalloff: 0
+    - HardEdgeSize: 0.29
+    - SoftEdgeAlpha: 0.1
+    - SoftEdgeFalloff: 0
+    - SoftEdgeSize: 16.05
+    - _LightScalar: 0.1
+    - _RampLevels: 15.25
     m_Colors:
-    - HardEdgeColor: {r: 29.406385, g: 2.163863, b: 24.31352, a: 0}
-    - SoftEdgeColor: {r: 0.9245283, g: 0.116874315, b: 0.78264296, a: 0}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _EmissColor: {r: 1, g: 0, b: 0, a: 0}
-    - _HighColor: {r: 1122.2345, g: 253.90768, b: 1212.3518, a: 0}
-    - _LowColor: {r: 1024, g: 0, b: 0, a: 0}
+    - HardEdgeColor: {r: 0, g: 0, b: 0, a: 0}
+    - SoftEdgeColor: {r: 0, g: 497950.34, b: 1361207.4, a: 0}
+    - _HighColor: {r: 229.41011, g: 969.66614, b: 2210.6816, a: 0}
+    - _LowColor: {r: 534.9286, g: 587.0758, b: 645.81354, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
