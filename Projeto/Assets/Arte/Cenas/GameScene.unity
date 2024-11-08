@@ -27455,6 +27455,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2393163011520180726, guid: 384b70e51a75e20439cb043468b6779f, type: 3}
+--- !u!4 &1604341099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3200988901096834528, guid: 384b70e51a75e20439cb043468b6779f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661074770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1624737577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2343503916458056944, guid: d60ae19ec78ddac4780fd650480be138,
@@ -44892,9 +44898,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a811c07a25a7f4f9699344103a991a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceSpikes: []
   playerY: {fileID: 2114654755}
   button1Y: {fileID: 1640290563}
   button2Y: {fileID: 2062323918}
+  objectToMove: {fileID: 1604341099}
+  targetXPosition: -395.16
+  moveSpeed: 2
 --- !u!1 &2133231737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1847056953008208213, guid: 384b70e51a75e20439cb043468b6779f,
