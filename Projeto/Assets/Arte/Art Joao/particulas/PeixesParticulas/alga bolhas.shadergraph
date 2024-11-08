@@ -284,7 +284,7 @@
                 "m_Node": {
                     "m_Id": "7d5be6c5013d4586bd1f7e67cf1a3196"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 2
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -1330,7 +1330,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 2.0,
+    "m_Value": 1.0,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -2268,7 +2268,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 2.0,
+    "m_Value": 1.7999999523162842,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -3248,9 +3248,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.07650855928659439,
-        "g": 0.4245283007621765,
-        "b": 0.07008720934391022,
+        "r": 0.9323460459709168,
+        "g": 0.9433962106704712,
+        "b": 0.06674972176551819,
         "a": 0.0
     },
     "isMainColor": false,
@@ -4706,9 +4706,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 4.6349897384643559,
+        "y": 4.6349897384643559,
+        "z": 4.6349897384643559
     },
     "m_DefaultValue": {
         "x": 0.0,
