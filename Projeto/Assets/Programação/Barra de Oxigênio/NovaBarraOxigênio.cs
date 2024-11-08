@@ -17,7 +17,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     private bool isResetting = false;
     private bool isDecreasing = true;
     public bool isOxygenDepleted = false;
-
+    private Animator animator;
     private float defaultDecreaseRate;
     private float giantEyeDecreaseRate;
 
