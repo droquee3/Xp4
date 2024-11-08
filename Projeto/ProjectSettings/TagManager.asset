@@ -10,6 +10,8 @@ TagManager:
   - PushBackZone
   - EsferaMenor
   - EsferaColetavel
+  - Button1
+  - Button2
   layers:
   - Default
   - TransparentFX
