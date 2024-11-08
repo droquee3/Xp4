@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
+  m_IndirectSpecularColor: {r: 261.80057, g: 324.3278, b: 429.24698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25528,17 +25528,17 @@ PrefabInstance:
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 481.9
+      value: 544.38
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 64.2
+      value: 51.057
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2556.2
+      value: -2691.44
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
@@ -25624,7 +25624,7 @@ PrefabInstance:
         type: 3}
       propertyPath: progressBar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1356275673}
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: cameraTransform
@@ -25657,6 +25657,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2114654756}
+    - targetCorrespondingSourceObject: {fileID: 5180806456022357040, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2114654761}
     - targetCorrespondingSourceObject: {fileID: 29785008215346729, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       insertIndex: -1
@@ -27563,6 +27567,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2243284011989983471, guid: 384b70e51a75e20439cb043468b6779f, type: 3}
+--- !u!4 &1640290563 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -88834235773541711, guid: 384b70e51a75e20439cb043468b6779f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661074770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1641599064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7186635295184189801, guid: 384b70e51a75e20439cb043468b6779f,
@@ -29113,7 +29123,7 @@ PrefabInstance:
     - target: {fileID: -1228158101552321641, guid: 384b70e51a75e20439cb043468b6779f,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Button1
       objectReference: {fileID: 0}
     - target: {fileID: -1187614049955355960, guid: 384b70e51a75e20439cb043468b6779f,
         type: 3}
@@ -29368,7 +29378,7 @@ PrefabInstance:
     - target: {fileID: -45280343644665507, guid: 384b70e51a75e20439cb043468b6779f,
         type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Button2
       objectReference: {fileID: 0}
     - target: {fileID: -27651207382461871, guid: 384b70e51a75e20439cb043468b6779f,
         type: 3}
@@ -44664,6 +44674,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5237719932375234098, guid: 384b70e51a75e20439cb043468b6779f, type: 3}
+--- !u!4 &2062323918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3250204237991920108, guid: 384b70e51a75e20439cb043468b6779f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661074770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2069241881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3267705363943288117, guid: d60ae19ec78ddac4780fd650480be138,
@@ -44864,6 +44880,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esferaPrincipal: {fileID: 105186732}
   totalEsferas: 3
+--- !u!114 &2114654761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114654749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a811c07a25a7f4f9699344103a991a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerY: {fileID: 2114654755}
+  button1Y: {fileID: 1640290563}
+  button2Y: {fileID: 2062323918}
 --- !u!1 &2133231737 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1847056953008208213, guid: 384b70e51a75e20439cb043468b6779f,
