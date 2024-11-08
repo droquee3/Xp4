@@ -25,6 +25,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     {
         currentOffset = minOffset;
         UpdateMaterial();
+        animator = player.GetComponent<Animator>();
     }
 
     void Update()
@@ -83,7 +84,20 @@ public class NovaBarraOxigênio : MonoBehaviour
     void OxygenDepleted()
     {
         isOxygenDepleted = true;
+        animator.SetTrigger("Death"); 
+        StartCoroutine(WaitForDeathAnimation());
+    }
+
+    IEnumerator WaitForDeathAnimation()
+    {
+        animator.SetFloat("Speed", 1.0f);
+
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        yield return new WaitForSeconds(2f);
+
         player.SetActive(false);
+
         Invoke("RespawnPlayer", 2f);
     }
 
@@ -92,6 +106,7 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         isOxygenDepleted = false;
         player.SetActive(true);
+        animator.SetTrigger("IsGrounded"); 
         UpdateMaterial();
     }
 

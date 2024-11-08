@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   maxNumberOfEyes: 2
   spawnInterval: 4
   oxygenBar: {fileID: 1356275673}
-  reductionAmount: 0.1
+  reductionAmount: 1
 --- !u!135 &91272916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27908,8 +27908,8 @@ MonoBehaviour:
   oxygenMaterial: {fileID: 2100000, guid: 7aceab284d68ef544a8c07998e6ceb8c, type: 2}
   maxOffset: 0.127
   minOffset: -0.135
-  reductionRate: 0.001
-  delayBeforeStart: 2
+  reductionRate: 1
+  delayBeforeStart: 0
   resetDelay: 3
   player: {fileID: 2114654749}
   isOxygenDepleted: 0
@@ -30519,7 +30519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vignetteMaterial: {fileID: 2100000, guid: 8df4858a0b036544698a81bd345ca982, type: 2}
   changeSpeed: 1
-  animationDelay: 0
+  animationDelay: 3
 --- !u!114 &1660176232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47597,7 +47597,7 @@ MonoBehaviour:
   oxygenBar: {fileID: 1356275673}
   proximityThreshold: 5
   reductionOffset: 0.1
-  normalDecreaseRate: 0.001
+  normalDecreaseRate: 1
 --- !u!4 &1994310831
 Transform:
   m_ObjectHideFlags: 0
