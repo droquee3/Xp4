@@ -23,10 +23,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: telescopio
+  m_Name: pilar 1
   m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: c1f2c0540e2441a479d0649d3e98de91, type: 2}
+  m_Parent: {fileID: 2100000, guid: aa5e098ca73e8e5469fd22c185c53123, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _DISABLE_DECALS
@@ -50,16 +50,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - HardEdgeSize: 0.679
-    - SoftEdgeAlpha: 0
-    - SoftEdgeFalloff: 0.08
-    - _RampLevels: 21.4
+    m_Floats: []
     m_Colors:
-    - HardEdgeColor: {r: 136.37115, g: 725.5373, b: 1256.9861, a: 0}
-    - SoftEdgeColor: {r: 90.420975, g: 137.13403, b: 1127.6025, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissColor: {r: 612.33057, g: 731.5639, b: 1458.5852, a: 1}
-    - _LowColor: {r: 0.38410378, g: 0.18155926, b: 0.754717, a: 0}
+    - _Color: {r: 0.5036885, g: 0.4552332, b: 0.6226415, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
