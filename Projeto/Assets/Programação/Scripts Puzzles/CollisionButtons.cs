@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class CollisionButtons : MonoBehaviour {
 
-    public GameObject[] iceSpikes;
-
     public Transform playerY;
     public Transform button1Y;
     public Transform button2Y;
-    public Transform objectToMove; // Objeto que será movido
-    public float targetXPosition = -395.16f; // Posição x alvo do objeto
-    public float moveSpeed = 2f; // Velocidade do movimento
+    public Transform door; // Adiciona uma referência à porta
+    public Transform targetPosition; // A posição para onde a porta deve se mover
 
     private bool isPressedButton1 = false;
     private bool isPressedButton2 = false;
@@ -22,8 +19,9 @@ public class CollisionButtons : MonoBehaviour {
     }
 
     void Update() {
-        if (isPressedButton1 || isPressedButton2) {
-            MoveObjectToTarget();
+        // Verifica se a porta deve ser movida
+        if (isPressedButton2) {
+            MoveDoor();
         }
     }
 
@@ -39,17 +37,10 @@ public class CollisionButtons : MonoBehaviour {
         }
     }
 
-    void MoveObjectToTarget() {
-        Vector3 currentPosition = objectToMove.position;
-        Vector3 targetPosition = new Vector3(targetXPosition, currentPosition.y, currentPosition.z);
-
-        // Move o objeto gradualmente para a posição alvo no eixo X
-        objectToMove.position = Vector3.MoveTowards(currentPosition, targetPosition, moveSpeed * Time.deltaTime);
-
-        // Verifica se o objeto chegou na posição alvo
-        if (objectToMove.position.x == targetXPosition) {
-            isPressedButton1 = false;
-            isPressedButton2 = false;
-        }
+    // Função para mover a porta
+    private void MoveDoor() {
+        // Mover a porta para a posição do outro objeto
+        door.position = targetPosition.position;
+        //Debug.Log("[Movement] Porta se moveu para a posição do target.");
     }
 }
