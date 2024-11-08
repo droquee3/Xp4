@@ -27838,6 +27838,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
+      propertyPath: oxygenBar
+      value: 
+      objectReference: {fileID: 1356275673}
+    - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
+        type: 3}
       propertyPath: progressBar
       value: 
       objectReference: {fileID: 1356275673}
@@ -27849,7 +27854,7 @@ PrefabInstance:
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: swimOxygenReductionRate
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8117532139046115775, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
