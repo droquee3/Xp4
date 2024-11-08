@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AreiaShader
+  m_Name: PEDRA2
   m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
     type: 3}
   m_Parent: {fileID: 0}
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e58cf6028c5b51f44b25986e74946c6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7937b2aeb0170f541965b3ec0d34a9c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -218,7 +218,7 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
-    - _LightScalar: 1
+    - _LightScalar: 2.91
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -236,7 +236,7 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PerPixelSorting: 0
-    - _RampLevels: 4.25
+    - _RampLevels: 100
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0

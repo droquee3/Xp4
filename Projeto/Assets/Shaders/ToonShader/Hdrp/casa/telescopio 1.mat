@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AreiaShader
+  m_Name: telescopio 1
   m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
     type: 3}
   m_Parent: {fileID: 0}
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e58cf6028c5b51f44b25986e74946c6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: bdce1ff63eb234f4fb7ab83bc001629c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -155,12 +155,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - HardEdgeAlpha: 0
+    - HardEdgeAlpha: 1
     - HardEdgeFalloff: 1
-    - HardEdgeSize: 0
-    - SoftEdgeAlpha: 0.59
+    - HardEdgeSize: 0.606
+    - SoftEdgeAlpha: 0.749
     - SoftEdgeFalloff: 0
-    - SoftEdgeSize: 23.48
+    - SoftEdgeSize: 27.8
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -218,7 +218,7 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
-    - _LightScalar: 1
+    - _LightScalar: 0.32
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -236,7 +236,7 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PerPixelSorting: 0
-    - _RampLevels: 4.25
+    - _RampLevels: 21.4
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -285,21 +285,21 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - HardEdgeColor: {r: 351.81552, g: 247.54553, b: 208.14215, a: 1}
-    - SoftEdgeColor: {r: 574.6787, g: 752.40247, b: 1594.6581, a: 0}
+    - HardEdgeColor: {r: 136.37115, g: 725.5373, b: 1256.9861, a: 0}
+    - SoftEdgeColor: {r: 107.327034, g: 441.60904, b: 910.13336, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.5791521, g: 0.5768512, b: 0.8207547, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissColor: {r: 1202.5753, g: 1302.7362, b: 1335.418, a: 1}
+    - _EmissColor: {r: 612.33057, g: 731.5639, b: 1458.5852, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _HighColor: {r: 728.1121, g: 819.9197, b: 895.3584, a: 0}
+    - _HighColor: {r: 89.70787, g: 443.04803, b: 669.6502, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _LowColor: {r: 0.16846557, g: 0.41971284, b: 0.90188676, a: 0}
+    - _LowColor: {r: 0.38410378, g: 0.18155926, b: 0.754717, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}

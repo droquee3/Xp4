@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: edb9d0f1fbca1da498d5caaea49c3b2d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -155,12 +155,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - HardEdgeAlpha: 0.83
-    - HardEdgeFalloff: 1
-    - HardEdgeSize: 1
-    - SoftEdgeAlpha: 1
-    - SoftEdgeFalloff: 1
-    - SoftEdgeSize: 29.24
+    - HardEdgeAlpha: 0.563
+    - HardEdgeFalloff: 0.424
+    - HardEdgeSize: 0.333
+    - SoftEdgeAlpha: 0.203
+    - SoftEdgeFalloff: 0.261
+    - SoftEdgeSize: 29.03
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -218,7 +218,7 @@ Material:
     - _Ior: 1.5
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
-    - _LightScalar: 1.24
+    - _LightScalar: 3.77
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -236,7 +236,7 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PerPixelSorting: 0
-    - _RampLevels: 16.36
+    - _RampLevels: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0

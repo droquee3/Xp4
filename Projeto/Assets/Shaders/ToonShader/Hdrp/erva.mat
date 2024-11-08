@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AreiaShader
+  m_Name: erva
   m_Shader: {fileID: -6465566751694194690, guid: 9944953fa1907a7469e32b64cdfbdb04,
     type: 3}
   m_Parent: {fileID: 0}
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e58cf6028c5b51f44b25986e74946c6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: bdce1ff63eb234f4fb7ab83bc001629c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -155,12 +155,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - HardEdgeAlpha: 0
+    - HardEdgeAlpha: 1
     - HardEdgeFalloff: 1
-    - HardEdgeSize: 0
-    - SoftEdgeAlpha: 0.59
-    - SoftEdgeFalloff: 0
-    - SoftEdgeSize: 23.48
+    - HardEdgeSize: 0.52
+    - SoftEdgeAlpha: 0
+    - SoftEdgeFalloff: 0.84
+    - SoftEdgeSize: 30
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -285,21 +285,21 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - HardEdgeColor: {r: 351.81552, g: 247.54553, b: 208.14215, a: 1}
-    - SoftEdgeColor: {r: 574.6787, g: 752.40247, b: 1594.6581, a: 0}
+    - HardEdgeColor: {r: 0, g: 1024, b: 943.0635, a: 0}
+    - SoftEdgeColor: {r: 667.5006, g: 649.46454, b: 991.97754, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissColor: {r: 1202.5753, g: 1302.7362, b: 1335.418, a: 1}
+    - _EmissColor: {r: 1335.418, g: 1196.8369, b: 1196.8369, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _HighColor: {r: 728.1121, g: 819.9197, b: 895.3584, a: 0}
+    - _HighColor: {r: 464.45023, g: 757.1335, b: 1103.8505, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _LowColor: {r: 0.16846557, g: 0.41971284, b: 0.90188676, a: 0}
+    - _LowColor: {r: 0.3850975, g: 0.1999074, b: 0.7207546, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
