@@ -18,7 +18,7 @@ public class UnderwaterMovement : MonoBehaviour
     private bool isGrounded = true;
     private bool isSwimming = false;
     private float startYPosition;
-    public ProgressBar progressBar;
+    public NovaBarraOxigênio progressBar;
     public float swimOxygenReductionRate = 0.02f;
     private float previousYPosition;
     private float defaultOxygenReductionRate = 0.001f;
@@ -139,7 +139,7 @@ public class UnderwaterMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Button1") || collision.gameObject.CompareTag("Button2"))
         {
             isGrounded = true;
             animator.SetBool("IsGrounded", true);
