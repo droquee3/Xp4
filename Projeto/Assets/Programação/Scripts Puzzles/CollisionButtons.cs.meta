@@ -9,7 +9,7 @@ MonoImporter:
   - button2Y: {instanceID: 0}
   - door: {instanceID: 0}
   - targetPosition: {instanceID: 0}
-  - buttonPressParticle: {fileID: 7746267629523173092, guid: 3b00a2537e140314a95c3b38df85c104,
+  - particle: {fileID: 7746267629523173092, guid: 3b00a2537e140314a95c3b38df85c104,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

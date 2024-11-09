@@ -12,9 +12,10 @@ public class CollisionButtons : MonoBehaviour
     public Transform targetPosition;
 
     private bool isPressedButton1 = false;
-    private bool isPressedButton2 = false;
+    public bool isPressedButton2 = false;
     private Vector3 button2OriginalPosition;
     private Vector3 button2PressedPosition;
+
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class CollisionButtons : MonoBehaviour
         door.position = targetPosition.position;
         Debug.Log("[Movement] Porta movida para a posição alvo.");
     }
+
 }
 
 
