@@ -102,7 +102,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - _offSet: 0.5
-    - _offset: -0.1288635
+    - _offset: -0.1169379
     - _segmentAmount: 22.4
     m_Colors:
     - _Color: {r: 0, g: 0.9622641, b: 0.8271146, a: 0}
