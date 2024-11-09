@@ -289,7 +289,7 @@ Material:
     - SoftEdgeColor: {r: 1768.1348, g: 1492.726, b: 942.4491, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.93963563, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.9664353, b: 0.4198113, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissColor: {r: 1335.418, g: 1196.8369, b: 1196.8369, a: 1}
