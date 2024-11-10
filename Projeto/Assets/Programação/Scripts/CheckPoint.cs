@@ -22,10 +22,10 @@ public class CheckPoint : MonoBehaviour
             if (oxygenBar != null)
             {
                 oxygenBar.SetOxygenToMinOffset(minOffset);
-                oxygenBar.SetCheckpointPosition(transform.position); 
+                oxygenBar.SetCheckpointPosition(transform.position);
+                oxygenBar.RestartOxygenDelay(); // Chama o método para reiniciar o atraso
                 respiracao.Play();
             }
         }
     }
-
 }

@@ -23,7 +23,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     private Animator animator;
     private float defaultDecreaseRate;
     private float giantEyeDecreaseRate;
-
+   
     void Start()
     {
         currentOffset = minOffset;
@@ -163,5 +163,13 @@ public class NovaBarraOxigênio : MonoBehaviour
     {
         currentOffset = minOffset;
         UpdateMaterial();
+    }
+
+    public void RestartOxygenDelay()
+    {
+        resetElapsedTime = 0f;
+        isResetting = true; 
+        isDecreasing = false;
+        Debug.Log("Atraso do oxigênio reiniciado após o checkpoint!");
     }
 }
