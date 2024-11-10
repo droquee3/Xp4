@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CollisionButtons : MonoBehaviour
 {
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem particle2;
+
+    private bool donebutton1 = false;
+    private bool donebutton2 = false;
+
     public Transform playerY;
 
     public Transform button1Y;
@@ -45,6 +51,20 @@ public class CollisionButtons : MonoBehaviour
         {
             freeze.SetActive(true);   
             freezeR.SetActive(false); 
+        }
+    }
+
+    void Update()
+    {
+        if (isPressedButton1 && !donebutton1)
+        {
+            particle.Play();
+            donebutton1 = true;
+        }
+        if (isPressedButton2 && !donebutton2)
+        {
+            particle2.Play();
+            donebutton2 = true;
         }
     }
 
