@@ -10,9 +10,17 @@ public class Coleta : MonoBehaviour
 
     private AudioSource fragmentSound;
 
+    public GameObject picBanheiro; 
+    public GameObject picParkour; 
+    public GameObject picGeladeira;
+
+
     void Start()
     {
         fragmentSound = GetComponent<AudioSource>();
+        picBanheiro.SetActive(false);
+        picParkour.SetActive(false);
+        picGeladeira.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -28,6 +36,44 @@ public class Coleta : MonoBehaviour
                 particle2.Play();
                 particle3.Play();
             }
+            if (other.gameObject.name == "Cylinder.006")
+            {
+                Invoke("ShowPicGeladeira", 1f);
+            }
+            if (other.gameObject.name == "Fragmento Espelho")
+            {
+                Invoke("ShowPicBanheiro", 1f);
+            }
+            if (other.gameObject.name == "Cylinder.007")
+            {
+                Invoke("ShowPicParkour", 1f);
+            }
         }
+        
+    }
+
+    void ShowPicBanheiro()
+    {
+        picBanheiro.SetActive(true);
+        Invoke("HidePic", 4f);
+    }
+    void ShowPicGeladeira()
+    {
+        picGeladeira.SetActive(true);
+
+        Invoke("HidePic", 4f);
+    }
+    void ShowPicParkour()
+    {
+        picBanheiro.SetActive(true);
+
+        Invoke("HidePic", 4f);
+    }
+
+    void HidePic()
+    {
+        picBanheiro.SetActive(false);
+        picParkour.SetActive(false);
+        picGeladeira.SetActive(false);
     }
 }
