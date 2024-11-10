@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38358, g: 325.10843, b: 430.30963, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.464
+      value: 42.84
       objectReference: {fileID: 0}
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
@@ -25455,14 +25455,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757163765}
   serializedVersion: 8
-  lengthInSec: 50
+  lengthInSec: 100
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -25530,7 +25530,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 100
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -25583,7 +25583,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -25701,7 +25701,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -26409,8 +26409,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.34033993
-          value: 0.48684257
+          time: 0.34267452
+          value: 0.2435984
           inSlope: -7.562054
           outSlope: -7.562054
           tangentMode: 0
@@ -26418,8 +26418,8 @@ ParticleSystem:
           inWeight: 0.2703931
           outWeight: 0.15016316
         - serializedVersion: 3
-          time: 0.69552296
-          value: 0.41946828
+          time: 0.6978728
+          value: 0.20325124
           inSlope: -9.184978
           outSlope: -9.184978
           tangentMode: 0
@@ -26428,7 +26428,7 @@ ParticleSystem:
           outWeight: 0.17082642
         - serializedVersion: 3
           time: 1
-          value: 0.44594574
+          value: 0.2702713
           inSlope: 1
           outSlope: 1
           tangentMode: 0

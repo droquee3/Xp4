@@ -12,7 +12,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     public float resetDelay = 3f;
     public GameObject player;
     public AudioClip oxygenDepletedSound;
-    public float deathSoundVolume = 1.0f; // Volume ajustável para o som da morte
+    public float deathSoundVolume = 1.0f; 
 
     private float currentOffset;
     private float elapsedTime = 0f;
@@ -76,7 +76,6 @@ public class NovaBarraOxigênio : MonoBehaviour
         isOxygenDepleted = true;
         animator.SetTrigger("Death");
 
-        // Reproduz o som da morte com o volume ajustável
         if (oxygenDepletedSound != null)
         {
             PlaySoundWithVolume(oxygenDepletedSound, deathSoundVolume);
@@ -87,14 +86,14 @@ public class NovaBarraOxigênio : MonoBehaviour
 
     void PlaySoundWithVolume(AudioClip clip, float volume)
     {
-        // Cria um objeto temporário para tocar o som
+        
         GameObject audioObject = new GameObject("TempAudio");
         audioObject.transform.position = transform.position;
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = volume; // Ajusta o volume do som
+        audioSource.volume = volume; 
         audioSource.Play();
-        Destroy(audioObject, clip.length); // Destroi o objeto após o som ser reproduzido
+        Destroy(audioObject, clip.length); 
     }
 
     IEnumerator WaitForDeathAnimation()
