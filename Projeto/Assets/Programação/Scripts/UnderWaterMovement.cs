@@ -135,7 +135,7 @@ public class UnderwaterMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Button1") || collision.gameObject.CompareTag("BUtton2"))
         {
             isGrounded = true;
             animator.SetBool("IsGrounded", true);
