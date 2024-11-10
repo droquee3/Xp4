@@ -11,6 +11,9 @@ public class NovaBarraOxigênio : MonoBehaviour
     public float delayBeforeStart = 2f;
     public float resetDelay = 3f;
     public GameObject player;
+    public AudioClip oxygenDepletedSound; 
+    private AudioSource oxygenAudioSource;
+
     private float currentOffset;
     private float elapsedTime = 0f;
     private float resetElapsedTime = 0f;
@@ -26,6 +29,12 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         UpdateMaterial();
         animator = player.GetComponent<Animator>();
+
+        
+        oxygenAudioSource = gameObject.AddComponent<AudioSource>();
+        oxygenAudioSource.clip = oxygenDepletedSound;
+        oxygenAudioSource.playOnAwake = false;
+        oxygenAudioSource.spatialBlend = 0f; 
     }
 
     void Update()
@@ -84,7 +93,13 @@ public class NovaBarraOxigênio : MonoBehaviour
     void OxygenDepleted()
     {
         isOxygenDepleted = true;
-        animator.SetTrigger("Death"); 
+        animator.SetTrigger("Death");
+
+        if (!oxygenAudioSource.isPlaying)
+        {
+            oxygenAudioSource.Play(); 
+        }
+
         StartCoroutine(WaitForDeathAnimation());
     }
 
@@ -106,7 +121,13 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         isOxygenDepleted = false;
         player.SetActive(true);
-        animator.SetTrigger("IsGrounded"); 
+
+        if (oxygenAudioSource != null)
+        {
+            oxygenAudioSource.Stop(); 
+        }
+
+        animator.SetTrigger("IsGrounded");
         UpdateMaterial();
     }
 
