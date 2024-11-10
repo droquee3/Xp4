@@ -9,7 +9,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
     public float spawnRadius = 5f;
     public float moveSpeed = 2f;
     public int maxNumberOfEyes = 5;
-    public float spawnInterval = 1f;
+    private float spawnInterval = 3f;
     public NovaBarraOxigênio oxygenBar; 
     public float reductionAmount = 1.7f;
 
