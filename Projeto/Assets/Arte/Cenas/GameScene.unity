@@ -343,7 +343,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &12858817
@@ -565,7 +565,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &35096134
@@ -620,7 +620,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &41115704
@@ -895,7 +895,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &82278287
@@ -1855,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 707721416084321269, guid: 48799624408b4cd419b72c970c54ffab,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4087399860137143229, guid: 48799624408b4cd419b72c970c54ffab,
         type: 3}
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &142855845
@@ -7278,7 +7278,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 200
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.003
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &558891417
@@ -7591,7 +7591,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &602563392
@@ -8724,7 +8724,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &709852012
@@ -11422,7 +11422,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &911575069
@@ -11711,7 +11711,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &947195927
@@ -13944,7 +13944,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1105524093
@@ -15215,7 +15215,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1188487296
@@ -15541,7 +15541,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1202266340
@@ -16558,7 +16558,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1273358405
@@ -17950,17 +17950,17 @@ PrefabInstance:
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.37
+      value: 77.1
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39
+      value: 39.4
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2410.91
+      value: -2412
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
@@ -18332,7 +18332,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1367445730
@@ -19652,7 +19652,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &1542175585
@@ -20045,6 +20045,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01534994eadee5247bdb2f067b589c02, type: 3}
+--- !u!1 &1619062790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619062793}
+  - component: {fileID: 1619062792}
+  - component: {fileID: 1619062791}
+  m_Layer: 0
+  m_Name: Zoom Casa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1619062791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619062790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718b4034981f92d449b4617da142a79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOrbital: {fileID: 557805177}
+  zoomOutDistance: 17
+  zoomDuration: 3
+  smoothTime: 1
+--- !u!135 &1619062792
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619062790}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1619062793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619062790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 495.4, y: 68.3, z: -2565}
+  m_LocalScale: {x: 44.95617, y: 9.404186, z: 37.63119}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627733894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: 384b70e51a75e20439cb043468b6779f,
@@ -34097,7 +34167,7 @@ MonoBehaviour:
   offsetY: 10
   offsetZ: 350
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.004
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &2026720437
@@ -36166,6 +36236,7 @@ SceneRoots:
   - {fileID: 1356275668}
   - {fileID: 91272912}
   - {fileID: 1253087839}
+  - {fileID: 1619062793}
   - {fileID: 41115704}
   - {fileID: 12858817}
   - {fileID: 1367445730}
