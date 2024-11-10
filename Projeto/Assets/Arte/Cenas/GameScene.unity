@@ -18983,7 +18983,8 @@ MonoBehaviour:
   delayBeforeStart: 0
   resetDelay: 3
   player: {fileID: 2114654749}
-  oxygenDepletedSound: {fileID: 0}
+  oxygenDepletedSound: {fileID: 8300000, guid: 41bdf7d6df8b5cc4fae20a5446f9b5fd, type: 3}
+  deathSoundVolume: 1
   isOxygenDepleted: 0
 --- !u!1001 &1361033082
 PrefabInstance:
