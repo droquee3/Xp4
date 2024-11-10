@@ -65,19 +65,6 @@ public class NovaBarraOxigênio : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Checkpoint") && !isResetting && !isOxygenDepleted)
-        {
-            currentOffset = minOffset;
-            UpdateMaterial();
-
-            isResetting = true;
-            isDecreasing = false;
-            resetElapsedTime = 0f;
-        }
-    }
-
     public void ReduceOnCollision(float amount)
     {
         currentOffset -= amount;
@@ -162,5 +149,11 @@ public class NovaBarraOxigênio : MonoBehaviour
     public void ResetDecreaseRateAfterGiantEye()
     {
         reductionRate = defaultDecreaseRate;
+    }
+
+    public void SetOxygenToMinOffset(float minOffset)
+    {
+        currentOffset = minOffset;
+        UpdateMaterial(); // Atualiza o material da barra de oxigênio
     }
 }

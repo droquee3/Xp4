@@ -43,6 +43,7 @@ public class OlhosComportamento : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Entrou");
         if (other.CompareTag("Player"))
         {
             if (explosionEffect != null)
