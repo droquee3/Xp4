@@ -5,7 +5,13 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     public NovaBarraOxigênio oxygenBar;
-    public float minOffset = -0.5f; 
+    public float minOffset = -0.5f;
+    private AudioSource respiracao;
+
+    void Start()
+    {
+        respiracao = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,7 +22,9 @@ public class CheckPoint : MonoBehaviour
             if (oxygenBar != null)
             {
                 oxygenBar.SetOxygenToMinOffset(minOffset);
+                respiracao.Play();
             }
         }
     }
+
 }
