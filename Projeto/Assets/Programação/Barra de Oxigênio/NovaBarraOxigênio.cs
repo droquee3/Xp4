@@ -12,8 +12,8 @@ public class NovaBarraOxigênio : MonoBehaviour
     public float resetDelay = 3f;
     public GameObject player;
     public AudioClip oxygenDepletedSound;
-    public float deathSoundVolume = 1.0f; 
-
+    public float deathSoundVolume = 1.0f;
+    private Vector3 checkpointPosition;
     private float currentOffset;
     private float elapsedTime = 0f;
     private float resetElapsedTime = 0f;
@@ -29,6 +29,12 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         UpdateMaterial();
         animator = player.GetComponent<Animator>();
+        checkpointPosition = player.transform.position;
+    }
+
+    public void SetCheckpointPosition(Vector3 position)
+    {
+        checkpointPosition = position; 
     }
 
     void Update()
@@ -113,6 +119,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     {
         currentOffset = minOffset;
         isOxygenDepleted = false;
+        player.transform.position = checkpointPosition; 
         player.SetActive(true);
 
         animator.SetTrigger("IsGrounded");

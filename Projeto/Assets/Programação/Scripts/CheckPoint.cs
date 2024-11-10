@@ -17,11 +17,12 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Checkpoint Trigger colidido!"); 
+            Debug.Log("Checkpoint Trigger colidido!");
 
             if (oxygenBar != null)
             {
                 oxygenBar.SetOxygenToMinOffset(minOffset);
+                oxygenBar.SetCheckpointPosition(transform.position); 
                 respiracao.Play();
             }
         }
