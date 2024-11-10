@@ -6,6 +6,8 @@ public class CollisionButtons : MonoBehaviour
 {
     [SerializeField] ParticleSystem particle;
     [SerializeField] ParticleSystem particle2;
+    [SerializeField] AudioSource button1Audio;
+    [SerializeField] AudioSource button2Audio;
 
     private bool donebutton1 = false;
     private bool donebutton2 = false;
@@ -59,11 +61,14 @@ public class CollisionButtons : MonoBehaviour
         if (isPressedButton1 && !donebutton1)
         {
             particle.Play();
+            button1Audio.Play();
             donebutton1 = true;
+
         }
         if (isPressedButton2 && !donebutton2)
         {
             particle2.Play();
+            button2Audio.Play();
             donebutton2 = true;
         }
     }
