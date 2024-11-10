@@ -991,7 +991,7 @@ MonoBehaviour:
   maxNumberOfEyes: 2
   spawnInterval: 4
   oxygenBar: {fileID: 1356275673}
-  reductionAmount: 1
+  reductionAmount: 0.05
 --- !u!135 &91272916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4447,6 +4447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010118446818, guid: 01534994eadee5247bdb2f067b589c02,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11816,7 +11821,7 @@ MonoBehaviour:
   maxNumberOfEyes: 2
   spawnInterval: 4
   oxygenBar: {fileID: 1356275673}
-  reductionAmount: 1
+  reductionAmount: 0.05
 --- !u!4 &1253087839
 Transform:
   m_ObjectHideFlags: 0

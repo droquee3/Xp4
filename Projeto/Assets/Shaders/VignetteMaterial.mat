@@ -145,7 +145,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BlurWidth: 0.1
-    - _CircleRadius: 0.62563777
+    - _CircleRadius: 1
     - _CoatMask: 0
     - _CullMode: 2
     - _CullModeForward: 2
