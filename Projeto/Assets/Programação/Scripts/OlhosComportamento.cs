@@ -7,28 +7,34 @@ public class OlhosComportamento : MonoBehaviour
     private Transform player;
     private float moveSpeed;
     private float reductionAmount;
-    private NovaBarraOxigênio oxygenBar; 
+    private NovaBarraOxigênio oxygenBar;
     private ParticleSystem explosionEffect;
+    private AudioSource audioSource;
 
     public Vector3 rotationOffset;
+    public AudioClip collisionSound; 
 
-    public void Initialize(Transform player, float moveSpeed, float reductionAmount, NovaBarraOxigênio oxygenBar) 
+    public void Initialize(Transform player, float moveSpeed, float reductionAmount, NovaBarraOxigênio oxygenBar)
     {
         this.player = player;
         this.moveSpeed = moveSpeed;
         this.reductionAmount = reductionAmount;
-        this.oxygenBar = oxygenBar; 
+        this.oxygenBar = oxygenBar;
 
         explosionEffect = GetComponentInChildren<ParticleSystem>(true);
         if (explosionEffect != null)
         {
             explosionEffect.gameObject.SetActive(false);
         }
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = collisionSound;
+        audioSource.playOnAwake = false;
     }
 
     void Update()
     {
-        if (player != null && !oxygenBar.isOxygenDepleted) 
+        if (player != null && !oxygenBar.isOxygenDepleted)
         {
             Vector3 targetPosition = player.position;
             targetPosition.y += 1.5f;
@@ -43,9 +49,15 @@ public class OlhosComportamento : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entrou");
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Entrou");
+
+            if (audioSource != null && collisionSound != null)
+            {
+                audioSource.Play();
+            }
+
             if (explosionEffect != null)
             {
                 explosionEffect.transform.parent = null;
@@ -55,7 +67,7 @@ public class OlhosComportamento : MonoBehaviour
                 Destroy(explosionEffect.gameObject, explosionEffect.main.duration);
             }
 
-            if (oxygenBar != null) 
+            if (oxygenBar != null)
             {
                 oxygenBar.ReduceOnCollision(-reductionAmount);
             }

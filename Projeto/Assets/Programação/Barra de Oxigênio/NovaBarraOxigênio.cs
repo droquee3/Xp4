@@ -154,6 +154,6 @@ public class NovaBarraOxigênio : MonoBehaviour
     public void SetOxygenToMinOffset(float minOffset)
     {
         currentOffset = minOffset;
-        UpdateMaterial(); // Atualiza o material da barra de oxigênio
+        UpdateMaterial(); 
     }
 }
