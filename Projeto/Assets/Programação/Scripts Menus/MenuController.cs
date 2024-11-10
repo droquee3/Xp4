@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject[] buttons;  
+    public GameObject[] buttons;
+    public GameObject menu;
+    public GameObject creditos;
     public int hoveredButtonIndex = -1;  
     public int selectedButtonIndex = 0;  
     public bool isControlMode = false;   
@@ -14,10 +16,14 @@ public class MenuController : MonoBehaviour
     public Vector3 normalScale = new Vector3(1, 1, 1);
     public Vector3 highlightedScale = new Vector3(1.2f, 1.2f, 1.2f);  // Aumenta 20%
 
-    private float nextInputTime = 0f;  
+    private float nextInputTime = 0f;
+
+    private bool onCredits = false;
 
     void Start()
     {
+        menu.SetActive(true);
+        creditos.SetActive(false);
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
@@ -75,6 +81,14 @@ public class MenuController : MonoBehaviour
         {
             HandleControllerInput();
         }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (onCredits == true)
+            {
+                OpenMenu();
+            }
+        }
     }
 
     void HandleControllerInput()
@@ -117,11 +131,14 @@ public class MenuController : MonoBehaviour
             case "StartButton":
                 StartGame();
                 break;
-            case "OptionsButton":
+            case "CreditsButton":
                 OpenOptions();
                 break;
             case "QuitButton":
                 QuitGame();
+                break;
+            case "BackButton":
+                OpenMenu();
                 break;
             default:
                 Debug.Log("Botão não reconhecido: " + buttonName);
@@ -137,6 +154,16 @@ public class MenuController : MonoBehaviour
     void OpenOptions()
     {
         Debug.Log("Abrindo opções...");
+        menu.SetActive(false);
+        creditos.SetActive(true);
+        onCredits = true;
+    }
+
+    void OpenMenu()
+    {
+        menu.SetActive(true);
+        creditos.SetActive(false);
+        onCredits = false;
     }
 
     void QuitGame()
