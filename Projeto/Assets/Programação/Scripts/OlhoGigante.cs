@@ -9,9 +9,11 @@ public class OlhoGigante : MonoBehaviour
     public float activeTime = 5f;
     public float offsetY = 5f;
     public float offsetZ = 10f;
-    public NovaBarraOxigênio oxygenBar; 
+    public NovaBarraOxigênio oxygenBar;
     public float oxygenIncreaseRate = 0.05f;
     public Vector3 eyeRotationOffset;
+
+    public AudioClip eyeAppearSound; // Som tocado quando o olho aparece
     private bool eyeActivated = false;
     private float deactivateTimer = 0f;
     private Vector3 initialEyePosition;
@@ -28,18 +30,29 @@ public class OlhoGigante : MonoBehaviour
     {
         if (other.CompareTag("Player") && !eyeActivated)
         {
+            // Define a posição do olho
             Vector3 playerDirection = other.transform.forward;
             Vector3 eyePosition = transform.position + playerDirection * offsetZ;
             initialEyePosition = new Vector3(eyePosition.x, transform.position.y + offsetY, eyePosition.z);
             eye.transform.position = initialEyePosition;
 
+            // Ativa o olho
             eye.SetActive(true);
             eyeActivated = true;
             deactivateTimer = activeTime;
 
+            // Reproduz o som de aparecimento do olho
+            if (eyeAppearSound != null)
+            {
+                AudioSource.PlayClipAtPoint(eyeAppearSound, transform.position);
+            }
+
+            // Inicia o som de batimento cardíaco em loop usando outro script
+            SomBatimentos.Instance.PlayHeartbeatSound();
+
             if (oxygenBar != null)
             {
-                oxygenBar.ModifyDecreaseRateForEyes(oxygenBar.reductionRate + oxygenIncreaseRate); 
+                oxygenBar.ModifyDecreaseRateForEyes(oxygenBar.reductionRate + oxygenIncreaseRate);
             }
 
             LookAtPlayer();
@@ -58,12 +71,14 @@ public class OlhoGigante : MonoBehaviour
 
                 if (deactivateTimer <= 0)
                 {
+                    // Desativa o olho e para o som de batimento cardíaco
                     eye.SetActive(false);
                     eyeActivated = false;
+                    SomBatimentos.Instance.StopHeartbeatSound();
 
                     if (oxygenBar != null)
                     {
-                        oxygenBar.ModifyDecreaseRateForEyes(oxygenBar.reductionRate - oxygenIncreaseRate); 
+                        oxygenBar.ModifyDecreaseRateForEyes(oxygenBar.reductionRate - oxygenIncreaseRate);
                     }
                 }
             }
