@@ -5,8 +5,8 @@ using UnityEngine;
 public class SomBatimentos : MonoBehaviour
 {
     public static SomBatimentos Instance;
-    public AudioClip heartbeatSound; // Som de batimento cardíaco
-    private GameObject audioObject; // Objeto temporário para tocar o som
+    public AudioClip heartbeatSound; 
+    private GameObject audioObject; 
 
     void Awake()
     {
@@ -25,7 +25,6 @@ public class SomBatimentos : MonoBehaviour
     {
         if (heartbeatSound != null && audioObject == null)
         {
-            // Cria um objeto temporário para tocar o som em loop
             audioObject = new GameObject("HeartbeatAudio");
             AudioSource audioSource = audioObject.AddComponent<AudioSource>();
             audioSource.clip = heartbeatSound;
@@ -39,7 +38,7 @@ public class SomBatimentos : MonoBehaviour
     {
         if (audioObject != null)
         {
-            Destroy(audioObject); // Destrói o objeto de áudio quando o som deve parar
+            Destroy(audioObject); 
             audioObject = null;
         }
     }
