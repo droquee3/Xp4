@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public GameObject pauseMenuUI;        
+    public GameObject pauseMenuUI;
+    public GameObject OptionsUI;
     public GameObject[] buttons;          
     public int hoveredButtonIndex = -1;   
     public int selectedButtonIndex = 0;   
@@ -22,6 +23,7 @@ public class PauseMenuController : MonoBehaviour
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        OptionsUI.SetActive(false);
 
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -179,6 +181,7 @@ public class PauseMenuController : MonoBehaviour
     void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
+        OptionsUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
 
@@ -189,8 +192,8 @@ public class PauseMenuController : MonoBehaviour
     void OpenSettings()
     {
         Debug.Log("Abrir configurações");
-        // Aqui você pode carregar uma cena de configurações ou exibir o painel de configurações
-        // Exemplo: SceneManager.LoadScene("Configurações");
+        pauseMenuUI.SetActive(false);
+        OptionsUI.SetActive(true);
     }
 
     void ReturnToMainMenu()

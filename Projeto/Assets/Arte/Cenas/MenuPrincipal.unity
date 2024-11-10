@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4de0908577a9e44091939eb265f424a, type: 2}
   m_sharedMaterial: {fileID: 7258834781224706816, guid: d4de0908577a9e44091939eb265f424a,
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 1432218677}
   - component: {fileID: 1432218676}
   m_Layer: 5
-  m_Name: OptionsButton
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
