@@ -19,7 +19,7 @@ public class UnderwaterMovement : MonoBehaviour
     public NovaBarraOxigênio oxygenBar;
     public float swimOxygenReductionRate = 0.02f;
     private float previousYPosition;
-    private float defaultOxygenReductionRate = 0.001f;
+    private float defaultOxygenReductionRate = 0.005f;
     private Animator animator;
 
     void Start()
