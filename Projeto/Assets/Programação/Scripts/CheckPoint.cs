@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dasfasdfasf : MonoBehaviour
+public class CheckPoint : MonoBehaviour
 {
     public NovaBarraOxigênio oxygenBar;
     public float minOffset = -0.5f; 
