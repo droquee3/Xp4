@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.62
+      value: 87.36
       objectReference: {fileID: 0}
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
@@ -402,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2416.06
+      value: -2413.72
       objectReference: {fileID: 0}
     - target: {fileID: 5406287505743484463, guid: f6ba5ec604ad8a841acc0fc137195c38,
         type: 3}
@@ -1855,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 707721416084321269, guid: 48799624408b4cd419b72c970c54ffab,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4087399860137143229, guid: 48799624408b4cd419b72c970c54ffab,
         type: 3}
@@ -6963,7 +6963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2031504687}
-  distance: 7
+  distance: 6.8
   xSpeed: 150
   ySpeed: 150
   yMinLimit: 2.5
@@ -7257,8 +7257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraOrbital: {fileID: 557805177}
-  zoomOutDistance: 17
-  zoomDuration: 3
+  zoomOutDistance: 14
+  zoomDuration: 2
   smoothTime: 1
 --- !u!114 &558891416
 MonoBehaviour:
@@ -7276,9 +7276,9 @@ MonoBehaviour:
   player: {fileID: 2114654755}
   activeTime: 10
   offsetY: 10
-  offsetZ: 350
+  offsetZ: 200
   oxygenBar: {fileID: 1356275673}
-  oxygenIncreaseRate: 0.05
+  oxygenIncreaseRate: 0.003
   eyeRotationOffset: {x: 50, y: -78, z: 103.4}
   eyeAppearSound: {fileID: 0}
 --- !u!4 &558891417
@@ -17950,17 +17950,17 @@ PrefabInstance:
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 235.07
+      value: 83.37
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.85
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2440.55
+      value: -2410.91
       objectReference: {fileID: 0}
     - target: {fileID: 5525420490852863626, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
@@ -31268,16 +31268,16 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 392e43b0725844a4fb5cf2b39f877179, type: 3}
-  m_Resource: {fileID: 8300000, guid: 392e43b0725844a4fb5cf2b39f877179, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c13e2dbc348465942bb224b2ea5cec4f, type: 3}
+  m_Resource: {fileID: 8300000, guid: c13e2dbc348465942bb224b2ea5cec4f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.254
+  m_Volume: 0.407
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 149
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
