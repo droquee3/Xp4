@@ -11,8 +11,8 @@ public class NovaBarraOxigênio : MonoBehaviour
     public float delayBeforeStart = 2f;
     public float resetDelay = 3f;
     public GameObject player;
-    public AudioClip oxygenDepletedSound; 
-    private AudioSource oxygenAudioSource;
+    public AudioClip oxygenDepletedSound;
+    public float deathSoundVolume = 1.0f; // Volume ajustável para o som da morte
 
     private float currentOffset;
     private float elapsedTime = 0f;
@@ -29,12 +29,6 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         UpdateMaterial();
         animator = player.GetComponent<Animator>();
-
-        
-        oxygenAudioSource = gameObject.AddComponent<AudioSource>();
-        oxygenAudioSource.clip = oxygenDepletedSound;
-        oxygenAudioSource.playOnAwake = false;
-        oxygenAudioSource.spatialBlend = 0f; 
     }
 
     void Update()
@@ -82,12 +76,25 @@ public class NovaBarraOxigênio : MonoBehaviour
         isOxygenDepleted = true;
         animator.SetTrigger("Death");
 
-        if (!oxygenAudioSource.isPlaying)
+        // Reproduz o som da morte com o volume ajustável
+        if (oxygenDepletedSound != null)
         {
-            oxygenAudioSource.Play(); 
+            PlaySoundWithVolume(oxygenDepletedSound, deathSoundVolume);
         }
 
         StartCoroutine(WaitForDeathAnimation());
+    }
+
+    void PlaySoundWithVolume(AudioClip clip, float volume)
+    {
+        // Cria um objeto temporário para tocar o som
+        GameObject audioObject = new GameObject("TempAudio");
+        audioObject.transform.position = transform.position;
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volume; // Ajusta o volume do som
+        audioSource.Play();
+        Destroy(audioObject, clip.length); // Destroi o objeto após o som ser reproduzido
     }
 
     IEnumerator WaitForDeathAnimation()
@@ -108,11 +115,6 @@ public class NovaBarraOxigênio : MonoBehaviour
         currentOffset = minOffset;
         isOxygenDepleted = false;
         player.SetActive(true);
-
-        if (oxygenAudioSource != null)
-        {
-            oxygenAudioSource.Stop(); 
-        }
 
         animator.SetTrigger("IsGrounded");
         UpdateMaterial();
@@ -154,6 +156,6 @@ public class NovaBarraOxigênio : MonoBehaviour
     public void SetOxygenToMinOffset(float minOffset)
     {
         currentOffset = minOffset;
-        UpdateMaterial(); 
+        UpdateMaterial();
     }
 }
