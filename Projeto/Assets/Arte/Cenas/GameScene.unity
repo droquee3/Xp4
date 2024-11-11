@@ -18559,7 +18559,7 @@ PrefabInstance:
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: swimSpeed
-      value: 3.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
