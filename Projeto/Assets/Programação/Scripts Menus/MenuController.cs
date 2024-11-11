@@ -24,6 +24,8 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        press.Stop();
+        selection.Stop();
         menu.SetActive(true);
         creditos.SetActive(false);
         for (int i = 0; i < buttons.Length; i++)
