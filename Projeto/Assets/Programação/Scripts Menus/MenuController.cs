@@ -19,6 +19,8 @@ public class MenuController : MonoBehaviour
     private float nextInputTime = 0f;
 
     private bool onCredits = false;
+    public AudioSource selection;
+    public AudioSource press;
 
     void Start()
     {
@@ -120,6 +122,11 @@ public class MenuController : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
+            if (selection != null)
+            {
+                Debug.Log("Som tocado");
+                selection.Play();
+            }
             buttons[i].transform.localScale = (i == selectedButtonIndex) ? highlightedScale : normalScale;
         }
     }
@@ -129,15 +136,35 @@ public class MenuController : MonoBehaviour
         switch (buttonName)
         {
             case "StartButton":
+                if (press != null)
+                {
+                    Debug.Log("Som tocado");
+                    press.Play();
+                }
                 StartGame();
                 break;
             case "CreditsButton":
+                if (press != null)
+                {
+                    Debug.Log("Som tocado");
+                    press.Play();
+                }
                 OpenOptions();
                 break;
             case "QuitButton":
+                if (press != null)
+                {
+                    Debug.Log("Som tocado");
+                    press.Play();
+                }
                 QuitGame();
                 break;
             case "BackButton":
+                if (press != null)
+                {
+                    Debug.Log("Som tocado");
+                    press.Play();
+                }
                 OpenMenu();
                 break;
             default:
