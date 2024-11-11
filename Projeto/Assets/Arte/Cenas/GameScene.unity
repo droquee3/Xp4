@@ -18575,7 +18575,7 @@ PrefabInstance:
     - target: {fileID: 7576787675252327352, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}
       propertyPath: swimOxygenReductionRate
-      value: 0.09
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8117532139046115775, guid: cf130abcde953e745899ff7ed66e57fd,
         type: 3}

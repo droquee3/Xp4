@@ -65,7 +65,7 @@ public class Coleta : MonoBehaviour
     }
     void ShowPicParkour()
     {
-        picBanheiro.SetActive(true);
+        picParkour.SetActive(true);
 
         Invoke("HidePic", 4f);
     }
