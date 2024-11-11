@@ -205,6 +205,11 @@ public class MenuController : MonoBehaviour
     {
         if (!isControlMode)
         {
+            if (selection != null)
+            {
+                Debug.Log("Som tocado");
+                selection.Play();
+            }
             for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].transform.localScale = (i == index) ? highlightedScale : normalScale;
