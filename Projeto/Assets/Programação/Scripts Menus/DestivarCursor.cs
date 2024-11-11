@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DestivarCursor : MonoBehaviour
 {
-    public bool cursorActiveInGameplay = false;
+    public bool cursorActiveInGameplay = false; 
 
     void Start()
     {
         ToggleCursor(cursorActiveInGameplay);
     }
+
     public void ToggleCursor(bool isActive)
     {
         Cursor.visible = isActive;
@@ -20,12 +21,12 @@ public class DestivarCursor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleCursor(true);
+            ToggleCursor(true); 
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ToggleCursor(false);
+            ToggleCursor(false); 
         }
     }
 }

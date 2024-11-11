@@ -1225,9 +1225,11 @@ MonoBehaviour:
   eyePrefab: {fileID: 8170676541854694025, guid: ddaacb7f6642a2e49bc00af0659241c8,
     type: 3}
   player: {fileID: 2114654755}
-  spawnRadius: 5
+  spawnRadius: 15
   moveSpeed: 1
   maxNumberOfEyes: 2
+  spawnInterval: 3
+  minDistanceBetweenEyes: 15
   oxygenBar: {fileID: 1356275673}
   reductionAmount: 0.05
 --- !u!135 &91272916
@@ -16434,9 +16436,11 @@ MonoBehaviour:
   eyePrefab: {fileID: 8170676541854694025, guid: ddaacb7f6642a2e49bc00af0659241c8,
     type: 3}
   player: {fileID: 2114654755}
-  spawnRadius: 5
+  spawnRadius: 15
   moveSpeed: 1
   maxNumberOfEyes: 2
+  spawnInterval: 3
+  minDistanceBetweenEyes: 15
   oxygenBar: {fileID: 1356275673}
   reductionAmount: 0.05
 --- !u!4 &1253087839

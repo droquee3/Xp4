@@ -9,8 +9,9 @@ public class OlhosPerseguidores2 : MonoBehaviour
     public float spawnRadius = 5f;
     public float moveSpeed = 2f;
     public int maxNumberOfEyes = 5;
-    private float spawnInterval = 3f;
-    public NovaBarraOxigênio oxygenBar; 
+    public float spawnInterval = 1f;
+    public float minDistanceBetweenEyes = 10f; 
+    public NovaBarraOxigênio oxygenBar;
     public float reductionAmount = 1.7f;
 
     private bool isSpawning = false;
@@ -24,7 +25,7 @@ public class OlhosPerseguidores2 : MonoBehaviour
             playerInsideTrigger = true;
             if (!isSpawning && spawnedEyes.Count < maxNumberOfEyes)
             {
-                StartCoroutine(SpawnEyes());
+                StartCoroutine(DelayedSpawnEyes());
             }
         }
     }
@@ -38,6 +39,53 @@ public class OlhosPerseguidores2 : MonoBehaviour
         }
     }
 
+    IEnumerator DelayedSpawnEyes()
+    {
+        yield return new WaitForSeconds(3f); 
+
+        if (playerInsideTrigger && !isSpawning && spawnedEyes.Count < maxNumberOfEyes)
+        {
+            StartCoroutine(SpawnEyes());
+        }
+    }
+
+    IEnumerator SpawnEyes()
+    {
+        isSpawning = true;
+
+        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !oxygenBar.isOxygenDepleted)
+        {
+            Vector3 randomPosition;
+            bool positionIsValid;
+
+            do
+            {
+                positionIsValid = true;
+                randomPosition = player.position + (Random.insideUnitSphere * spawnRadius);
+                randomPosition.y = player.position.y + Random.Range(1f, 2f);
+
+                foreach (var existingEye in spawnedEyes) 
+                {
+                    if (existingEye != null && Vector3.Distance(randomPosition, existingEye.transform.position) < minDistanceBetweenEyes)
+                    {
+                        positionIsValid = false;
+                        break;
+                    }
+                }
+            } while (!positionIsValid);
+
+            GameObject newEye = Instantiate(eyePrefab, randomPosition, Quaternion.identity); 
+            spawnedEyes.Add(newEye);
+
+            OlhosComportamento eyeBehavior = newEye.AddComponent<OlhosComportamento>();
+            eyeBehavior.Initialize(player, moveSpeed, reductionAmount, oxygenBar);
+
+            yield return new WaitForSeconds(spawnInterval);
+        }
+
+        isSpawning = false;
+    }
+
     void StopAllEyes()
     {
         foreach (var eye in spawnedEyes)
@@ -48,27 +96,6 @@ public class OlhosPerseguidores2 : MonoBehaviour
             }
         }
         spawnedEyes.Clear();
-        isSpawning = false;
-    }
-
-    IEnumerator SpawnEyes()
-    {
-        isSpawning = true;
-
-        while (spawnedEyes.Count < maxNumberOfEyes && playerInsideTrigger && !oxygenBar.isOxygenDepleted)
-        {
-            Vector3 randomPosition = player.position + (Random.insideUnitSphere * spawnRadius);
-            randomPosition.y = player.position.y + Random.Range(1f, 2f);
-
-            GameObject eye = Instantiate(eyePrefab, randomPosition, Quaternion.identity);
-            spawnedEyes.Add(eye);
-
-            OlhosComportamento eyeBehavior = eye.AddComponent<OlhosComportamento>();
-            eyeBehavior.Initialize(player, moveSpeed, reductionAmount, oxygenBar); 
-
-            yield return new WaitForSeconds(spawnInterval);
-        }
-
         isSpawning = false;
     }
 
