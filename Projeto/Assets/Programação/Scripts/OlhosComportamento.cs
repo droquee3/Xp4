@@ -11,7 +11,8 @@ public class OlhosComportamento : MonoBehaviour
     private ParticleSystem explosionEffect;
 
     public Vector3 rotationOffset;
-    public AudioClip collisionSound; 
+    public AudioClip collisionSound;
+    public float collisionSoundVolume = 1.0f; 
 
     public void Initialize(Transform player, float moveSpeed, float reductionAmount, NovaBarraOxigênio oxygenBar)
     {
@@ -50,7 +51,7 @@ public class OlhosComportamento : MonoBehaviour
 
             if (collisionSound != null)
             {
-                AudioSource.PlayClipAtPoint(collisionSound, transform.position);
+                PlaySoundWithVolume(collisionSound, collisionSoundVolume);
             }
 
             if (explosionEffect != null)
@@ -69,5 +70,16 @@ public class OlhosComportamento : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    void PlaySoundWithVolume(AudioClip clip, float volume)
+    {
+        GameObject audioObject = new GameObject("TempAudio");
+        audioObject.transform.position = transform.position;
+        AudioSource audioSource = audioObject.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volume; 
+        audioSource.spatialBlend = 1.0f;
+        audioSource.Play();
     }
 }

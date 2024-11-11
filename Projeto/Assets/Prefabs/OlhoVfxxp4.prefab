@@ -4957,3 +4957,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationOffset: {x: 0, y: 0, z: 0}
   collisionSound: {fileID: 8300000, guid: 2226f3f8120346f4d96ec66acced3f0b, type: 3}
+  collisionSoundVolume: 10
