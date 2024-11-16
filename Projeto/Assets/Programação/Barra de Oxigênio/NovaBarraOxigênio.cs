@@ -9,7 +9,7 @@ public class NovaBarraOxigênio : MonoBehaviour
     public float minOffset = -0.5f;
     public float reductionRate = 0.1f;
     public float delayBeforeStart = 2f;
-    public float resetDelay = 3f;
+    public float resetDelay = 1f;
     public GameObject player;
     public AudioClip oxygenDepletedSound;
     public float deathSoundVolume = 1.0f;
