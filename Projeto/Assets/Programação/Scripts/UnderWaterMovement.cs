@@ -7,7 +7,6 @@ public class UnderwaterMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
     public float jumpForce = 5f;
-    public float swimSpeed = 3f;
     public float riseSpeed = 1.5f;
     public float fallSpeed = 1.5f;
     public float swimFallSpeed = 1.0f;
@@ -22,6 +21,11 @@ public class UnderwaterMovement : MonoBehaviour
     private float defaultOxygenReductionRate = 0.004f;
     private Animator animator;
 
+    private float currentSpeed = 0f; 
+    private float targetSpeed;
+    float accelerationTime = 1f;
+    float decelerationTime = 1f;
+    public float maxSwimSpeed = 19f;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -50,6 +54,7 @@ public class UnderwaterMovement : MonoBehaviour
 
         Vector3 movement = (forward * moveVertical + right * moveHorizontal).normalized;
 
+     
         if (!isSwimming)
         {
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
@@ -65,7 +70,26 @@ public class UnderwaterMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(movement.x * swimSpeed, rb.velocity.y, movement.z * swimSpeed);
+            
+            if (moveVertical > 0)
+            {
+                targetSpeed = maxSwimSpeed; 
+            }
+            else
+            {
+                targetSpeed = 0f; 
+            }
+
+            if (targetSpeed > currentSpeed)
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime / accelerationTime);
+            }
+            else
+            {
+                currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime / decelerationTime);
+            }
+
+            rb.velocity = movement * currentSpeed;
 
             if (Input.GetButton("Jump"))
             {

@@ -6,12 +6,10 @@ public class ProxCamera : MonoBehaviour
 {
     public CameraOrbital cameraOrbital;
     public float zoomOutDistance = 10f;
-    public float zoomDuration = 3f;
     public float smoothTime = 0.5f;
 
     private float originalDistance;
     private Coroutine zoomCoroutine;
-    private bool hasZoomedOnce = false;
 
     void Start()
     {
@@ -23,21 +21,20 @@ public class ProxCamera : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && cameraOrbital != null && !hasZoomedOnce)
+        if (other.CompareTag("Player") && cameraOrbital != null)
         {
-            hasZoomedOnce = true;
             if (zoomCoroutine != null) StopCoroutine(zoomCoroutine);
-            zoomCoroutine = StartCoroutine(HandleZoom());
+            zoomCoroutine = StartCoroutine(ZoomToDistance(zoomOutDistance));
         }
     }
 
-    private IEnumerator HandleZoom()
+    void OnTriggerExit(Collider other)
     {
-        yield return StartCoroutine(ZoomToDistance(zoomOutDistance));
-
-        yield return new WaitForSeconds(zoomDuration);
-
-        yield return StartCoroutine(ZoomToDistance(originalDistance));
+        if (other.CompareTag("Player") && cameraOrbital != null)
+        {
+            if (zoomCoroutine != null) StopCoroutine(zoomCoroutine);
+            zoomCoroutine = StartCoroutine(ZoomToDistance(originalDistance));
+        }
     }
 
     private IEnumerator ZoomToDistance(float targetDistance)
