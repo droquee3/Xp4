@@ -65,6 +65,7 @@ public class NovaBarraOxigênio : MonoBehaviour
         }
     }
 
+
     public void ReduceOnCollision(float amount)
     {
         currentOffset -= amount;

@@ -26,6 +26,7 @@ public class UnderwaterMovement : MonoBehaviour
     float accelerationTime = 1f;
     float decelerationTime = 1f;
     public float maxSwimSpeed = 19f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,6 +44,13 @@ public class UnderwaterMovement : MonoBehaviour
 
     void Update()
     {
+
+        if (cameraTransform == null)
+        {
+            Debug.LogWarning("cameraTransform está null ou foi destruído!");
+            return; // Sai da função se cameraTransform for null
+        }
+        
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -54,7 +62,19 @@ public class UnderwaterMovement : MonoBehaviour
 
         Vector3 movement = (forward * moveVertical + right * moveHorizontal).normalized;
 
-     
+        if (oxygenBar != null && oxygenBar.isOxygenDepleted)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
+            if (!isGrounded)
+            {
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallSpeed - 1) * Time.deltaTime;
+            }
+
+            return; 
+        }
+
+
         if (!isSwimming)
         {
             rb.velocity = new Vector3(movement.x * moveSpeed, rb.velocity.y, movement.z * moveSpeed);
@@ -70,14 +90,13 @@ public class UnderwaterMovement : MonoBehaviour
         }
         else
         {
-            
             if (moveVertical > 0)
             {
-                targetSpeed = maxSwimSpeed; 
+                targetSpeed = maxSwimSpeed;
             }
             else
             {
-                targetSpeed = 0f; 
+                targetSpeed = 0f;
             }
 
             if (targetSpeed > currentSpeed)
@@ -111,6 +130,22 @@ public class UnderwaterMovement : MonoBehaviour
         {
             animator.SetTrigger("Jump");
             Jump();
+        }
+    }
+
+    void OnEnable()
+    {
+        if (cameraTransform == null)
+        {
+            GameObject playerCamera = GameObject.Find("Camera"); 
+            if (playerCamera != null)
+            {
+                cameraTransform = playerCamera.transform;
+            }
+            else
+            {
+                Debug.LogWarning("cameraTransform ainda está null e não foi possível encontrar a câmera do jogador!");
+            }
         }
     }
 
@@ -159,7 +194,7 @@ public class UnderwaterMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Button1") || collision.gameObject.CompareTag("BUtton2"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Button1") || collision.gameObject.CompareTag("Button2"))
         {
             isGrounded = true;
             animator.SetBool("IsGrounded", true);

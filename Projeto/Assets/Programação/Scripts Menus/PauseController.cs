@@ -7,10 +7,10 @@ public class PauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     public GameObject OptionsUI;
-    public GameObject[] buttons;          
-    public int hoveredButtonIndex = -1;   
-    public int selectedButtonIndex = 0;   
-    public bool isControlMode = false;   
+    public GameObject[] buttons;
+    public int hoveredButtonIndex = -1;
+    public int selectedButtonIndex = 0;
+    public bool isControlMode = false;
 
     public Vector3 normalScale = new Vector3(1, 1, 1);
     public Vector3 highlightedScale = new Vector3(1.2f, 1.2f, 1.2f); // Aumenta 20%
@@ -99,7 +99,7 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-     private void HandleControllerInput()
+    private void HandleControllerInput()
     {
         // Verifica se o controle está ativo e se o tempo atual é maior ou igual ao tempo de entrada permitido
         if (isControlMode)
@@ -173,6 +173,9 @@ public class PauseMenuController : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         // Desabilitar a movimentação da câmera ou outros scripts que não devem funcionar enquanto o jogo está pausado
         // Aqui você pode desabilitar scripts que não devem ser executados
         // Exemplo: FindObjectOfType<CameraController>().enabled = false; 
@@ -180,6 +183,11 @@ public class PauseMenuController : MonoBehaviour
 
     void ResumeGame()
     {
+ 
+        // Ocultar e travar o cursor do mouse
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         pauseMenuUI.SetActive(false);
         OptionsUI.SetActive(false);
         Time.timeScale = 1f;
@@ -198,7 +206,7 @@ public class PauseMenuController : MonoBehaviour
 
     void ReturnToMainMenu()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MenuPrincipal");
     }
 

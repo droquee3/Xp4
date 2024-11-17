@@ -29,8 +29,8 @@ public class CollisionButtons : MonoBehaviour
     private bool isPressedButton1 = false;
     public bool isPressedButton2 = false;
 
-    public GameObject freeze;  
-    public GameObject freezeR; 
+    public GameObject freeze;
+    public GameObject freezeR;
 
     void Start()
     {
@@ -40,19 +40,17 @@ public class CollisionButtons : MonoBehaviour
         doorOriginalPosition = door.position;
         doorNewPosition = doorOriginalPosition + new Vector3(3.7f, 0, -2.9f);
 
-        // Define as posições inicial e pressionada do botão 1
+     
         button1OriginalPosition = button1Y.position;
         button1PressedPosition = button1OriginalPosition + new Vector3(0, -0.4f, 0);
 
-        // Define as posições inicial e pressionada do botão 2
         button2OriginalPosition = button2Y.position;
         button2PressedPosition = button2OriginalPosition + new Vector3(0, -0.4f, 0);
-        
-        // Inicializa o estado dos objetos freeze e freezeR
+
         if (freeze != null && freezeR != null)
         {
-            freeze.SetActive(true);   
-            freezeR.SetActive(false); 
+            freeze.SetActive(true);
+            freezeR.SetActive(false);
         }
     }
 
@@ -79,14 +77,14 @@ public class CollisionButtons : MonoBehaviour
         {
             isPressedButton1 = true;
             Debug.Log("[Collision] Colidiu com button1");
-            StartCoroutine(PressedButton()); // Inicia a animação
+            StartCoroutine(PressedButton()); 
         }
 
         if (collision.gameObject.CompareTag("Button2") && playerY.position.y > button2Y.position.y && !isPressedButton2)
         {
             isPressedButton2 = true;
             Debug.Log("[Collision] Colidiu com button2");
-            StartCoroutine(PressedButton()); // Inicia a animação
+            StartCoroutine(PressedButton()); 
         }
     }
 
@@ -98,7 +96,7 @@ public class CollisionButtons : MonoBehaviour
             float animationDuration = 0.5f;
             float dooranimationDuration = 2.0f;
 
-            // Lógica para pressionar o botão 2
+        
             while (elapsedTime < animationDuration)
             {
                 button2Y.position = Vector3.Lerp(button2OriginalPosition, button2PressedPosition, elapsedTime / animationDuration);
@@ -107,7 +105,6 @@ public class CollisionButtons : MonoBehaviour
             }
             button2Y.position = button2PressedPosition;
 
-            // Lógica para mover a porta
             while (elapsedTime < dooranimationDuration)
             {
                 door.position = Vector3.Lerp(doorOriginalPosition, doorNewPosition, elapsedTime / dooranimationDuration);
@@ -132,8 +129,8 @@ public class CollisionButtons : MonoBehaviour
 
             if (freeze != null && freezeR != null)
             {
-                freeze.SetActive(false);  // Torna o objeto freeze invisível
-                freezeR.SetActive(true);  // Torna o objeto freezeR visível
+                freeze.SetActive(false);  
+                freezeR.SetActive(true);  
             }
         }
     }

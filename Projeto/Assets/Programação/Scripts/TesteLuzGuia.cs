@@ -14,13 +14,14 @@ public class TesteLuzGuia : MonoBehaviour
     public float waypointSpeed = 3f;
     public float waypointThreshold = 0.1f;
     public int maxWaypoints = 5;
-    public float timeBeforeDeactivate = 2f;  
-
+    public float playerProximityThreshold = 2f;
+    public float rotationSpeed = 2f;
     private Vector3 currentVelocity;
     private int currentWaypointIndex = 0;
     private int waypointsTraversed = 0;
     private bool isDeactivating = false;
     private float deactivateTimer = 0f;
+    private bool waitingForPlayer = false;
 
     void Update()
     {
@@ -37,35 +38,50 @@ public class TesteLuzGuia : MonoBehaviour
             }
             else if (!isDeactivating)
             {
-               
                 isDeactivating = true;
-                deactivateTimer = timeBeforeDeactivate;
             }
         }
 
-       
         if (isDeactivating)
         {
             deactivateTimer -= Time.deltaTime;
             if (deactivateTimer <= 0)
             {
-                gameObject.SetActive(false);  
+                gameObject.SetActive(false);
             }
         }
     }
 
-
     void MoveAlongWaypoints()
     {
         if (waypoints.Length == 0) return;
+
+        if (waitingForPlayer)
+        {
+            if (Mathf.Abs(player.position.x - transform.position.x) <= 5f) 
+            {
+                waitingForPlayer = false; 
+            }
+            else
+            {
+                return; 
+            }
+        }
 
         Vector3 targetPosition = waypoints[currentWaypointIndex].position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, waypointSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, targetPosition) <= waypointThreshold)
         {
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
-            waypointsTraversed++;
+
+            if (currentWaypointIndex == 4 || currentWaypointIndex == 6)
+            {
+                waitingForPlayer = true;
+            }
+            else
+            {
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            }
         }
     }
 }

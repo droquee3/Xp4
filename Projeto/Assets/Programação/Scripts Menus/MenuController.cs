@@ -8,9 +8,9 @@ public class MenuController : MonoBehaviour
     public GameObject[] buttons;
     public GameObject menu;
     public GameObject creditos;
-    public int hoveredButtonIndex = -1;  
-    public int selectedButtonIndex = 0;  
-    public bool isControlMode = false;   
+    public int hoveredButtonIndex = -1;
+    public int selectedButtonIndex = 0;
+    public bool isControlMode = false;
     public float inputDelay = 0.2f;
 
     public Vector3 normalScale = new Vector3(1, 1, 1);
@@ -101,13 +101,13 @@ public class MenuController : MonoBehaviour
 
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (verticalInput > 0)  
+        if (verticalInput > 0)
         {
             selectedButtonIndex = (selectedButtonIndex - 1 + buttons.Length) % buttons.Length;
             UpdateButtonVisuals();
             nextInputTime = Time.time + inputDelay;
         }
-        else if (verticalInput < 0)  
+        else if (verticalInput < 0)
         {
             selectedButtonIndex = (selectedButtonIndex + 1) % buttons.Length;
             UpdateButtonVisuals();
